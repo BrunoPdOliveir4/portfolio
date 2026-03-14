@@ -1,0 +1,36 @@
+import type { ArchitectureConfig } from '@/types/architecture';
+
+export const nextiaConfig: ArchitectureConfig = {
+  id: 'nextia',
+  company: 'NextIA',
+  companyEn: 'NextIA',
+  description: 'Plataforma multi-tenant para orquestração de agentes de IA com chat omnichannel',
+  descriptionEn: 'Multi-tenant platform for AI agent orchestration with omnichannel chat',
+  nodes: [
+    { id: 'client-whatsapp', type: 'clientNode', position: { x: 0, y: 0 }, data: { label: 'WhatsApp', type: 'whatsapp' } },
+    { id: 'client-instagram', type: 'clientNode', position: { x: 0, y: 100 }, data: { label: 'Instagram', type: 'instagram' } },
+    { id: 'client-email', type: 'clientNode', position: { x: 0, y: 200 }, data: { label: 'Email', type: 'email' } },
+    { id: 'client-web', type: 'clientNode', position: { x: 0, y: 300 }, data: { label: 'Web Chat', type: 'web' } },
+    { id: 'gateway', type: 'serviceNode', position: { x: 250, y: 130 }, data: { label: 'API Gateway', description: 'Rate limiting + RBAC', tech: 'Node.js', icon: 'gateway' } },
+    { id: 'chat-service', type: 'serviceNode', position: { x: 500, y: 50 }, data: { label: 'Chat Service', description: 'Omnichannel routing', tech: 'TypeScript', icon: 'api' } },
+    { id: 'agent-service', type: 'serviceNode', position: { x: 500, y: 220 }, data: { label: 'Agent Service', description: 'ADK orchestration', tech: 'Python/FastAPI', icon: 'worker' } },
+    { id: 'rabbitmq', type: 'queueNode', position: { x: 500, y: 380 }, data: { label: 'RabbitMQ', type: 'rabbitmq' } },
+    { id: 'ai-agent', type: 'aiAgentNode', position: { x: 750, y: 130 }, data: { label: 'AI Agents', model: 'LLM via ADK', protocol: 'MCP' } },
+    { id: 'postgres', type: 'databaseNode', position: { x: 750, y: 300 }, data: { label: 'PostgreSQL', type: 'postgresql' } },
+    { id: 'redis', type: 'databaseNode', position: { x: 750, y: 420 }, data: { label: 'Redis Cache', type: 'redis' } },
+  ],
+  edges: [
+    { id: 'e1', source: 'client-whatsapp', target: 'gateway', animated: true },
+    { id: 'e2', source: 'client-instagram', target: 'gateway', animated: true },
+    { id: 'e3', source: 'client-email', target: 'gateway', animated: true },
+    { id: 'e4', source: 'client-web', target: 'gateway', animated: true },
+    { id: 'e5', source: 'gateway', target: 'chat-service' },
+    { id: 'e6', source: 'gateway', target: 'agent-service' },
+    { id: 'e7', source: 'chat-service', target: 'rabbitmq', style: { strokeDasharray: '5 5' }, label: 'async' },
+    { id: 'e8', source: 'agent-service', target: 'rabbitmq', style: { strokeDasharray: '5 5' }, label: 'async' },
+    { id: 'e9', source: 'agent-service', target: 'ai-agent', label: 'MCP' },
+    { id: 'e10', source: 'chat-service', target: 'postgres' },
+    { id: 'e11', source: 'agent-service', target: 'postgres' },
+    { id: 'e12', source: 'agent-service', target: 'redis', style: { strokeDasharray: '5 5' } },
+  ],
+};
