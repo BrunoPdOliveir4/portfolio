@@ -21,6 +21,16 @@ type Props = {
 const SITE_ORIGIN = 'https://brunopdoliveir4.github.io';
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 
+// Static OG image lives in public/ so GitHub Pages serves it with the correct
+// image/png content-type (an extensionless dynamic route is served as
+// octet-stream and rejected by some scrapers like LinkedIn).
+const ogImage = {
+  url: `${basePath}/opengraph-image.png`,
+  width: 1200,
+  height: 630,
+  alt: 'Bruno Pedroso — Back-End Engineer',
+};
+
 export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'metadata' });
   const path = `${basePath}/${locale}`;
@@ -39,11 +49,13 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
       url: path,
       siteName: 'Bruno Pedroso',
       locale,
+      images: [ogImage],
     },
     twitter: {
       card: 'summary_large_image',
       title: t('title'),
       description: t('description'),
+      images: [ogImage.url],
     },
   };
 }
