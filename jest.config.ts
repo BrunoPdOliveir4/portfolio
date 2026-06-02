@@ -12,6 +12,8 @@ const config: Config = {
     '\\.(css|less|scss|sass)$': '<rootDir>/src/__mocks__/styleMock.ts',
     '^framer-motion$': '<rootDir>/src/__mocks__/framer-motion.tsx',
     '^next-intl$': '<rootDir>/src/__mocks__/next-intl.tsx',
+    '^next-intl/navigation$': '<rootDir>/src/__mocks__/next-intl-navigation.tsx',
+    '^next-intl/routing$': '<rootDir>/src/__mocks__/next-intl-routing.tsx',
   },
   setupFilesAfterEnv: ['<rootDir>/src/test-utils/setup.ts'],
 };

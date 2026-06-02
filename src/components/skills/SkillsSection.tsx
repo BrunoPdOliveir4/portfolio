@@ -1,12 +1,14 @@
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { Section } from '@/components/ui/Section';
 import { SkillChip } from './SkillChip';
+import { pick } from '@/lib/cv-i18n';
 import { cv } from '@/data/cv';
 
 const highlightedSkills = ['TypeScript', 'Python', 'FastAPI', 'Node.js', 'RabbitMQ', 'PostgreSQL', 'Docker', 'ADK', 'MCP'];
 
 export function SkillsSection() {
   const t = useTranslations('skills');
+  const locale = useLocale();
 
   return (
     <Section id="skills" title={t('title')}>
@@ -14,7 +16,7 @@ export function SkillsSection() {
         {cv.skills.map((category) => (
           <div key={category.category} className="space-y-3">
             <h3 className="text-sm font-mono font-bold text-emerald-500 dark:text-emerald-400">
-              {'// '}{category.categoryEn}
+              {'// '}{pick(locale, category.category, category.categoryEn)}
             </h3>
             <div className="flex flex-wrap gap-2">
               {category.skills.map((skill) => (

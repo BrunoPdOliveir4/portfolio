@@ -1,89 +1,90 @@
 import { cv } from '@/data/cv';
+import { pick, formatPeriod } from '@/lib/cv-i18n';
 import type { CommandOutput } from '@/types/terminal';
 
-type CommandHandler = (args: string[]) => CommandOutput[];
+type CommandHandler = (args: string[], locale: string) => CommandOutput[];
 
 const commands: Record<string, CommandHandler> = {
-  help: () => [{
+  help: (_args, locale) => [{
     type: 'text',
     content: [
-      'Available commands:',
+      pick(locale, 'Comandos disponíveis:', 'Available commands:'),
       '',
-      '  help          — Show this help message',
-      '  whoami        — About me',
-      '  skills        — Technical skills',
-      '  experience    — Work experience',
-      '  education     — Education',
-      '  projects      — Relevant projects',
-      '  contact       — Contact info',
-      '  whatsapp      — Send me a WhatsApp message',
-      '  email         — Send me an email',
-      '  curriculum    — Download my resume (PDF)',
-      '  clear         — Clear terminal',
+      `  help          — ${pick(locale, 'Mostra esta ajuda', 'Show this help message')}`,
+      `  whoami        — ${pick(locale, 'Sobre mim', 'About me')}`,
+      `  skills        — ${pick(locale, 'Habilidades técnicas', 'Technical skills')}`,
+      `  experience    — ${pick(locale, 'Experiência profissional', 'Work experience')}`,
+      `  education     — ${pick(locale, 'Formação', 'Education')}`,
+      `  projects      — ${pick(locale, 'Projetos relevantes', 'Relevant projects')}`,
+      `  contact       — ${pick(locale, 'Informações de contato', 'Contact info')}`,
+      `  whatsapp      — ${pick(locale, 'Me manda um WhatsApp', 'Send me a WhatsApp message')}`,
+      `  email         — ${pick(locale, 'Me manda um email', 'Send me an email')}`,
+      `  curriculum    — ${pick(locale, 'Baixar meu currículo (PDF)', 'Download my resume (PDF)')}`,
+      `  clear         — ${pick(locale, 'Limpar o terminal', 'Clear terminal')}`,
       '  secret        — ???',
       '  cat resume.pdf',
     ].join('\n'),
   }],
 
-  whoami: () => [{
+  whoami: (_args, locale) => [{
     type: 'text',
     content: [
       `╔══════════════════════════════════════════╗`,
       `║  ${cv.name}`,
-      `║  ${cv.titleEn}`,
+      `║  ${pick(locale, cv.title, cv.titleEn)}`,
       `╚══════════════════════════════════════════╝`,
       '',
-      cv.profileEn,
+      pick(locale, cv.profile, cv.profileEn),
     ].join('\n'),
   }],
 
-  skills: () => cv.skills.map((cat) => ({
+  skills: (_args, locale) => cv.skills.map((cat) => ({
     type: 'text' as const,
-    content: `\x1b[32m${cat.categoryEn}\x1b[0m\n  ${cat.skills.join(' • ')}`,
+    content: `\x1b[32m${pick(locale, cat.category, cat.categoryEn)}\x1b[0m\n  ${cat.skills.join(' • ')}`,
   })),
 
-  experience: () => cv.experience.map((exp) => ({
+  experience: (_args, locale) => cv.experience.map((exp) => ({
     type: 'text' as const,
     content: [
-      `\x1b[32m${exp.roleEn}\x1b[0m — ${exp.company}`,
-      `  ${exp.period}`,
+      `\x1b[32m${pick(locale, exp.role, exp.roleEn)}\x1b[0m — ${exp.company}`,
+      `  ${formatPeriod(exp.periodStart, exp.periodEnd, locale)}`,
       '',
-      ...exp.bulletsEn.map((b) => `  • ${b}`),
+      ...pick(locale, exp.bullets, exp.bulletsEn).map((b) => `  • ${b}`),
       '',
       `  Stack: ${exp.technologies.join(', ')}`,
     ].join('\n'),
   })),
 
-  education: () => cv.education.map((edu) => ({
+  education: (_args, locale) => cv.education.map((edu) => ({
     type: 'text' as const,
     content: [
       `\x1b[32m${edu.institution}\x1b[0m`,
-      `  ${edu.degreeEn}`,
+      `  ${pick(locale, edu.degree, edu.degreeEn)}`,
       `  ${edu.period}`,
     ].join('\n'),
   })),
 
-  projects: () => cv.projects.map((proj) => ({
+  projects: (_args, locale) => cv.projects.map((proj) => ({
     type: 'text' as const,
     content: [
-      `\x1b[32m${proj.nameEn}\x1b[0m`,
-      `  ${proj.descriptionEn}`,
+      `\x1b[32m${pick(locale, proj.name, proj.nameEn)}\x1b[0m`,
+      `  ${pick(locale, proj.description, proj.descriptionEn)}`,
       `  Tech: ${proj.technologies.join(', ')}`,
     ].join('\n'),
   })),
 
-  contact: () => [{
+  contact: (_args, locale) => [{
     type: 'text',
     content: [
       `📧 Email:    ${cv.contact.email}`,
-      `📍 Location: ${cv.contact.location}`,
+      `📍 ${pick(locale, 'Local', 'Location')}:    ${cv.contact.location}`,
       `🐙 GitHub:   github.com/${cv.contact.github}`,
       `💼 LinkedIn: linkedin.com/in/${cv.contact.linkedin}`,
-      `📱 Phone:    ${cv.contact.phone}`,
+      `📱 ${pick(locale, 'Telefone', 'Phone')}: ${cv.contact.phone}`,
     ].join('\n'),
   }],
 
-  whatsapp: () => {
+  whatsapp: (_args, locale) => {
     const phoneDigits = cv.contact.phone.replace(/\D/g, '');
     if (typeof window !== 'undefined') {
       window.open(`https://wa.me/${phoneDigits}`, '_blank');
@@ -92,16 +93,16 @@ const commands: Record<string, CommandHandler> = {
       type: 'system',
       content: [
         '',
-        '📱 Opening WhatsApp...',
+        pick(locale, '📱 Abrindo o WhatsApp...', '📱 Opening WhatsApp...'),
         '',
-        `  Redirecting to wa.me/${phoneDigits}`,
-        '  A new tab should open shortly.',
+        `  ${pick(locale, 'Redirecionando para', 'Redirecting to')} wa.me/${phoneDigits}`,
+        `  ${pick(locale, 'Uma nova aba deve abrir em instantes.', 'A new tab should open shortly.')}`,
         '',
       ].join('\n'),
     }];
   },
 
-  email: () => {
+  email: (_args, locale) => {
     if (typeof window !== 'undefined') {
       window.open(`mailto:${cv.contact.email}`, '_blank');
     }
@@ -109,16 +110,16 @@ const commands: Record<string, CommandHandler> = {
       type: 'system',
       content: [
         '',
-        '📧 Opening email client...',
+        pick(locale, '📧 Abrindo o cliente de email...', '📧 Opening email client...'),
         '',
-        `  Composing email to ${cv.contact.email}`,
-        '  Your email client should open shortly.',
+        `  ${pick(locale, 'Escrevendo email para', 'Composing email to')} ${cv.contact.email}`,
+        `  ${pick(locale, 'Seu cliente de email deve abrir em instantes.', 'Your email client should open shortly.')}`,
         '',
       ].join('\n'),
     }];
   },
 
-  curriculum: () => {
+  curriculum: (_args, locale) => {
     if (typeof window !== 'undefined') {
       const link = document.createElement('a');
       link.href = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/curriculum.pdf`;
@@ -131,9 +132,9 @@ const commands: Record<string, CommandHandler> = {
       type: 'system',
       content: [
         '',
-        '📄 Downloading resume...',
+        pick(locale, '📄 Baixando o currículo...', '📄 Downloading resume...'),
         '',
-        '  Your download should start automatically.',
+        `  ${pick(locale, 'O download deve começar automaticamente.', 'Your download should start automatically.')}`,
         '  File: Bruno_Pedroso_Curriculum.pdf',
         '',
       ].join('\n'),
@@ -142,42 +143,66 @@ const commands: Record<string, CommandHandler> = {
 
   clear: () => [],
 
-  secret: () => [{
+  secret: (_args, locale) => [{
     type: 'system',
     content: [
       '',
-      '🔓 You found the secret!',
+      pick(locale, '🔓 Você achou o segredo!', '🔓 You found the secret!'),
       '',
       '  "Any sufficiently advanced technology is',
       '   indistinguishable from magic." — Arthur C. Clarke',
       '',
-      '  Fun fact: Before becoming a software engineer,',
-      '  I studied Music Education. The discipline of',
-      '  practicing scales translates surprisingly well',
-      '  to debugging production systems at 3 AM.',
+      ...pick(
+        locale,
+        [
+          '  Curiosidade: antes de virar engenheiro de software,',
+          '  eu estudei Educação Musical. A disciplina de treinar',
+          '  escalas se traduz surpreendentemente bem em depurar',
+          '  sistemas em produção às 3 da manhã.',
+        ],
+        [
+          '  Fun fact: Before becoming a software engineer,',
+          '  I studied Music Education. The discipline of',
+          '  practicing scales translates surprisingly well',
+          '  to debugging production systems at 3 AM.',
+        ],
+      ),
       '',
     ].join('\n'),
   }],
 
-  'cat': (args) => {
+  'cat': (args, locale) => {
     if (args[0] === 'resume.pdf') {
       return [{
         type: 'system',
         content: [
           '',
-          '📄 Opening resume...',
+          pick(locale, '📄 Abrindo o currículo...', '📄 Opening resume...'),
           '',
-          '  Just kidding — this is a terminal, not a PDF reader.',
-          '  But you can explore my experience with these commands:',
-          '  → whoami, experience, skills, education, projects',
+          ...pick(
+            locale,
+            [
+              '  Brincadeira — isto é um terminal, não um leitor de PDF.',
+              '  Mas dá pra explorar minha experiência com estes comandos:',
+              '  → whoami, experience, skills, education, projects',
+            ],
+            [
+              '  Just kidding — this is a terminal, not a PDF reader.',
+              '  But you can explore my experience with these commands:',
+              '  → whoami, experience, skills, education, projects',
+            ],
+          ),
           '',
         ].join('\n'),
       }];
     }
-    return [{ type: 'error', content: `cat: ${args[0] || ''}: No such file or directory` }];
+    return [{
+      type: 'error',
+      content: `cat: ${args[0] || ''}: ${pick(locale, 'Arquivo ou diretório não encontrado', 'No such file or directory')}`,
+    }];
   },
 
-  'sudo': (args) => {
+  'sudo': (args, locale) => {
     if (args.join(' ').includes('rm -rf')) {
       return [{
         type: 'system',
@@ -185,16 +210,32 @@ const commands: Record<string, CommandHandler> = {
           '',
           '💀 sudo rm -rf /',
           '',
-          '  Nice try! But this portfolio is read-only.',
-          '  Besides, I back up everything. 😎',
+          ...pick(
+            locale,
+            [
+              '  Boa tentativa! Mas este portfólio é somente leitura.',
+              '  E, além disso, eu tenho backup de tudo. 😎',
+            ],
+            [
+              '  Nice try! But this portfolio is read-only.',
+              '  Besides, I back up everything. 😎',
+            ],
+          ),
           '',
           '  ██████████████████████████ 100%',
-          '  Deleting nothing... Done!',
+          pick(locale, '  Deletando nada... Pronto!', '  Deleting nothing... Done!'),
           '',
         ].join('\n'),
       }];
     }
-    return [{ type: 'error', content: 'sudo: permission denied. This incident will be reported.' }];
+    return [{
+      type: 'error',
+      content: pick(
+        locale,
+        'sudo: permissão negada. Este incidente será reportado.',
+        'sudo: permission denied. This incident will be reported.',
+      ),
+    }];
   },
 };
 
@@ -206,7 +247,10 @@ export function getCommandSuggestions(partial: string): string[] {
   return commandNames.filter((name) => name.startsWith(lower) && name !== lower);
 }
 
-export function executeCommand(input: string): { command: string; output: CommandOutput[] } {
+export function executeCommand(
+  input: string,
+  locale: string,
+): { command: string; output: CommandOutput[] } {
   const trimmed = input.trim();
   if (!trimmed) return { command: '', output: [] };
 
@@ -214,28 +258,16 @@ export function executeCommand(input: string): { command: string; output: Comman
   const cmd = parts[0].toLowerCase();
   const args = parts.slice(1);
 
-  // Special case for "cat resume.pdf"
-  if (cmd === 'cat') {
-    const handler = commands['cat'];
-    return { command: trimmed, output: handler(args) };
-  }
-
-  // Special case for "sudo rm -rf /"
-  if (cmd === 'sudo') {
-    const handler = commands['sudo'];
-    return { command: trimmed, output: handler(args) };
-  }
-
   const handler = commands[cmd];
   if (!handler) {
     return {
       command: trimmed,
       output: [{
         type: 'error',
-        content: `${cmd}: command not found. Type 'help' for available commands.`,
+        content: `${cmd}: ${pick(locale, "comando não encontrado. Digite 'help' para ver os comandos.", "command not found. Type 'help' for available commands.")}`,
       }],
     };
   }
 
-  return { command: trimmed, output: handler(args) };
+  return { command: trimmed, output: handler(args, locale) };
 }

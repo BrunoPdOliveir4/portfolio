@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useCallback, useRef } from 'react';
+import { useLocale } from 'next-intl';
 import { executeCommand } from './commands';
 import type { TerminalLine } from '@/types/terminal';
 
@@ -12,6 +13,7 @@ export function useTerminal() {
   const [historyIndex, setHistoryIndex] = useState(-1);
   const [isBooting, setIsBooting] = useState(true);
   const inputRef = useRef<HTMLInputElement>(null);
+  const locale = useLocale();
 
   const addLine = useCallback((line: TerminalLine) => {
     setLines((prev) => [...prev, line]);
@@ -19,7 +21,7 @@ export function useTerminal() {
 
   const runCommand = useCallback(
     (input: string) => {
-      const { command, output } = executeCommand(input);
+      const { command, output } = executeCommand(input, locale);
 
       if (command === 'clear' || input.trim().toLowerCase() === 'clear') {
         setLines([]);
@@ -39,7 +41,7 @@ export function useTerminal() {
       setHistory((prev) => [command, ...prev]);
       setHistoryIndex(-1);
     },
-    [addLine]
+    [addLine, locale]
   );
 
   const navigateHistory = useCallback(

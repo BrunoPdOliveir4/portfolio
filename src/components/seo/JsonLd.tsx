@@ -1,4 +1,5 @@
 import { cv } from '@/data/cv';
+import { pick } from '@/lib/cv-i18n';
 
 const SITE_URL = 'https://brunopdoliveir4.github.io/portfolio';
 
@@ -11,7 +12,7 @@ export function JsonLd({ locale }: { locale: string }) {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: cv.name,
-    jobTitle: cv.titleEn,
+    jobTitle: pick(locale, cv.title, cv.titleEn),
     url: `${SITE_URL}/${locale}`,
     email: `mailto:${cv.contact.email}`,
     sameAs: [
