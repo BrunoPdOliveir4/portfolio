@@ -17,6 +17,13 @@ const config: Config = {
         border: "var(--border)",
         "muted-foreground": "var(--muted-foreground)",
         accent: "var(--accent)",
+        // Steel-blue drawn from the brand logo, used as a complementary accent
+        // alongside the terminal emerald.
+        steel: {
+          300: "#a9c3d8",
+          400: "#86a8c8",
+          500: "#6d8fb0",
+        },
       },
       fontFamily: {
         mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace'],

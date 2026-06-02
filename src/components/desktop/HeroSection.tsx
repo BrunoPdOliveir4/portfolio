@@ -35,7 +35,10 @@ export function HeroSection() {
     <div className="min-h-[80vh] flex flex-col items-center justify-center px-4 py-16 md:py-24">
       <div className="text-center mb-8">
         <h1 className="text-3xl md:text-4xl font-bold font-mono mb-2">
-          <span className="text-emerald-500">{'>'}</span> Bruno Pedroso
+          <span className="text-emerald-500">{'>'}</span>{' '}
+          <span className="bg-gradient-to-r from-emerald-400 to-steel-400 bg-clip-text text-transparent">
+            Bruno Pedroso
+          </span>
         </h1>
         <p className="text-muted-foreground font-mono text-sm">
           {t('subtitle')}
