@@ -10,7 +10,12 @@ import { cn } from '@/lib/utils';
 
 type TerminalMode = 'normal' | 'fullscreen' | 'minimized' | 'closed';
 
-export function Terminal() {
+type Props = {
+  embedded?: boolean;
+  onToggleDesktop?: () => void;
+};
+
+export function Terminal({ embedded, onToggleDesktop }: Props = {}) {
   const t = useTranslations('terminal');
   const { lines, isBooting, runCommand, navigateHistory, finishBoot, focusInput, inputRef } =
     useTerminal();
@@ -41,6 +46,52 @@ export function Terminal() {
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
   }, [mode]);
+
+  // Embedded mode: just render the terminal body without window chrome
+  if (embedded) {
+    return (
+      <div
+        ref={scrollRef}
+        className="h-full p-4 overflow-y-auto scrollbar-thin scrollbar-thumb-zinc-700 bg-zinc-950"
+        onClick={focusInput}
+      >
+        <AnimatePresence>
+          {isBooting && (
+            <div className="space-y-1">
+              {bootLines.map((line, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: i * 0.3 }}
+                  className="font-mono text-sm text-emerald-400"
+                >
+                  {line}
+                </motion.div>
+              ))}
+            </div>
+          )}
+        </AnimatePresence>
+        {!isBooting && (
+          <>
+            <div className="mb-2 font-mono text-sm text-emerald-400">
+              {bootLines.map((line, i) => (
+                <div key={i}>{line}</div>
+              ))}
+            </div>
+            <TerminalOutput lines={lines} />
+            <div className="mt-3">
+              <TerminalInput
+                onSubmit={runCommand}
+                onNavigateHistory={navigateHistory}
+                inputRef={inputRef as any}
+              />
+            </div>
+          </>
+        )}
+      </div>
+    );
+  }
 
   if (mode === 'closed') {
     return (
@@ -108,9 +159,25 @@ export function Terminal() {
             </svg>
           </button>
         </div>
-        <span className="text-xs text-zinc-500 font-mono ml-2">
+        <span className="text-xs text-zinc-500 font-mono ml-2 flex-1">
           bruno@portfolio — zsh
         </span>
+
+        {/* Desktop toggle button */}
+        {onToggleDesktop && (
+          <button
+            onClick={(e) => { e.stopPropagation(); onToggleDesktop(); }}
+            className="text-zinc-500 hover:text-zinc-300 transition-colors p-1 rounded hover:bg-zinc-800"
+            aria-label="Switch to desktop mode"
+            title="Switch to Desktop"
+          >
+            <svg className="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="1" y="2" width="14" height="10" rx="1" />
+              <path d="M5 14h6" />
+              <path d="M8 12v2" />
+            </svg>
+          </button>
+        )}
       </div>
 
       {/* Terminal body */}

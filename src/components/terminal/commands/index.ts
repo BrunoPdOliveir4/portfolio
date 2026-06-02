@@ -121,7 +121,7 @@ const commands: Record<string, CommandHandler> = {
   curriculum: () => {
     if (typeof window !== 'undefined') {
       const link = document.createElement('a');
-      link.href = '/portfolio/curriculum.pdf';
+      link.href = '/curriculum.pdf';
       link.download = 'Bruno_Pedroso_Curriculum.pdf';
       document.body.appendChild(link);
       link.click();
@@ -197,6 +197,14 @@ const commands: Record<string, CommandHandler> = {
     return [{ type: 'error', content: 'sudo: permission denied. This incident will be reported.' }];
   },
 };
+
+export const commandNames = Object.keys(commands);
+
+export function getCommandSuggestions(partial: string): string[] {
+  if (!partial) return [];
+  const lower = partial.toLowerCase();
+  return commandNames.filter((name) => name.startsWith(lower) && name !== lower);
+}
 
 export function executeCommand(input: string): { command: string; output: CommandOutput[] } {
   const trimmed = input.trim();
