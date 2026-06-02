@@ -121,7 +121,7 @@ const commands: Record<string, CommandHandler> = {
   curriculum: () => {
     if (typeof window !== 'undefined') {
       const link = document.createElement('a');
-      link.href = '/curriculum.pdf';
+      link.href = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/curriculum.pdf`;
       link.download = 'Bruno_Pedroso_Curriculum.pdf';
       document.body.appendChild(link);
       link.click();
