@@ -4,7 +4,10 @@ import { Navbar } from '../Navbar';
 describe('Navbar', () => {
   it('renders the brand link', () => {
     render(<Navbar />);
-    expect(screen.getByText('dev.bpedroso')).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Bruno Pedroso — home' })).toHaveAttribute(
+      'href',
+      '#terminal',
+    );
   });
 
   it('renders navigation links', () => {
