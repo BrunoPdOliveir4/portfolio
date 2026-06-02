@@ -1,0 +1,38 @@
+{
+  "metadata": {
+    "title": "Bruno Pedroso — Engenheiro Back-End",
+    "description": "Portfólio interativo de Bruno Pedroso, Engenheiro de Software Back-End especializado em TypeScript, Python, sistemas distribuídos e orquestração de agentes de IA."
+  },
+  "nav": {
+    "terminal": "Terminal",
+    "experience": "Experiência",
+    "skills": "Habilidades",
+    "projects": "Projetos"
+  },
+  "terminal": {
+    "boot1": "Inicializando portfólio v2.0...",
+    "boot2": "Carregando módulos...",
+    "boot3": "Sistema pronto.",
+    "boot4": "Digite 'help' para ver os comandos disponíveis.",
+    "reopen": "reabrir terminal"
+  },
+  "experience": {
+    "title": "Experiência Profissional",
+    "showMore": "Ver mais",
+    "showLess": "Ver menos"
+  },
+  "skills": {
+    "title": "Habilidades Técnicas"
+  },
+  "github": {
+    "title": "Atividade no GitHub",
+    "repositories": "Repositórios"
+  },
+  "footer": {
+    "builtWith": "Todos os direitos reservados - Bruno Pedroso de Oliveira"
+  },
+  "hero": {
+    "subtitle": "Engenheiro Back-End · TypeScript · Python · Sistemas Distribuídos",
+    "downloadCv": "Baixar CV"
+  }
+}

@@ -101,7 +101,7 @@ export function Terminal({ embedded, onToggleDesktop }: Props = {}) {
         onClick={() => setMode('normal')}
         className="px-6 py-3 rounded-lg border border-zinc-700 bg-zinc-900 font-mono text-sm text-emerald-400 hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/5 transition-all"
       >
-        {'>'} reopen terminal
+        {'>'} {t('reopen')}
       </motion.button>
     );
   }

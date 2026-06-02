@@ -7,72 +7,32 @@
     "terminal": "Terminal",
     "experience": "Experience",
     "skills": "Skills",
-    "architecture": "Architecture",
-    "projects": "Projects",
-    "contact": "Contact"
+    "projects": "Projects"
   },
   "terminal": {
     "boot1": "Initializing portfolio v2.0...",
     "boot2": "Loading modules...",
     "boot3": "System ready.",
     "boot4": "Type 'help' to see available commands.",
-    "prompt": "bruno@portfolio:~$",
-    "placeholder": "Type a command..."
-  },
-  "commands": {
-    "help": "Show available commands",
-    "whoami": "Display info about me",
-    "skills": "List my technical skills",
-    "experience": "Show my professional experience",
-    "education": "Show my education",
-    "projects": "List my relevant projects",
-    "contact": "Show my contact info",
-    "clear": "Clear the terminal",
-    "secret": "???",
-    "notFound": "Command not found. Type 'help' to see available commands."
+    "reopen": "reopen terminal"
   },
   "experience": {
     "title": "Professional Experience",
-    "present": "Present",
     "showMore": "Show more",
     "showLess": "Show less"
   },
   "skills": {
-    "title": "Technical Skills",
-    "codeToggle": "See how I code",
-    "typescript": "TypeScript",
-    "python": "Python"
-  },
-  "architecture": {
-    "title": "System Architecture",
-    "subtitle": "Interactive diagrams of the systems I built",
-    "zoom": "Scroll to zoom, drag to pan"
-  },
-  "projects": {
-    "title": "Projects",
-    "viewCode": "View code",
-    "viewLive": "View live"
+    "title": "Technical Skills"
   },
   "github": {
     "title": "GitHub Activity",
-    "recentCommits": "Recent Commits",
-    "repositories": "Repositories",
-    "stars": "stars",
-    "forks": "forks"
+    "repositories": "Repositories"
   },
   "footer": {
-    "builtWith": "All rights reserved - Bruno Pedroso de Oliveira",
-    "sourceCode": "Source code",
-    "madeBy": "Made by Bruno Pedroso"
-  },
-  "theme": {
-    "dark": "Dark mode",
-    "light": "Light mode"
-  },
-  "locale": {
-    "switchTo": "Mudar para Português"
+    "builtWith": "All rights reserved - Bruno Pedroso de Oliveira"
   },
   "hero": {
-    "subtitle": "Back-End Engineer · TypeScript · Python · Distributed Systems"
+    "subtitle": "Back-End Engineer · TypeScript · Python · Distributed Systems",
+    "downloadCv": "Download CV"
   }
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { AnimatePresence } from 'framer-motion';
 import { Terminal } from '@/components/terminal/Terminal';
 import { Desktop } from './Desktop';
@@ -17,6 +18,7 @@ const ctas = [
 
 export function HeroSection() {
   const [mode, setMode] = useState<'terminal' | 'desktop'>('terminal');
+  const t = useTranslations('hero');
 
   if (mode === 'desktop') {
     return (
@@ -36,7 +38,7 @@ export function HeroSection() {
           <span className="text-emerald-500">{'>'}</span> Bruno Pedroso
         </h1>
         <p className="text-muted-foreground font-mono text-sm">
-          Back-End Engineer · TypeScript · Python · Distributed Systems
+          {t('subtitle')}
         </p>
 
         <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
@@ -52,7 +54,7 @@ export function HeroSection() {
                   : 'rounded-lg border border-border px-4 py-2 font-mono text-sm text-muted-foreground transition-colors hover:border-emerald-500/50 hover:text-foreground'
               }
             >
-              {cta.label}
+              {cta.primary ? t('downloadCv') : cta.label}
             </a>
           ))}
         </div>

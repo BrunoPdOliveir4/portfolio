@@ -1,20 +1,26 @@
 import type { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getMessages, getTranslations } from 'next-intl/server';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
+import type { Locale } from '@/i18n/config';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { IntlProvider } from '@/components/providers/IntlProvider';
 import { JsonLd } from '@/components/seo/JsonLd';
+import { HtmlLang } from '@/components/seo/HtmlLang';
 
 export function generateStaticParams() {
-  return [{ locale: 'en' }];
+  return routing.locales.map((locale) => ({ locale }));
 }
 
 type Props = {
   children: ReactNode;
   params: { locale: string };
 };
+
+function isLocale(locale: string): locale is Locale {
+  return routing.locales.includes(locale as Locale);
+}
 
 // Origin only — Next prepends basePath to generated asset URLs (e.g. the OG
 // image), so keeping `/portfolio` out of metadataBase avoids double-prefixing.
@@ -41,6 +47,10 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
     description: t('description'),
     alternates: {
       canonical: path,
+      languages: {
+        pt: `${basePath}/pt`,
+        en: `${basePath}/en`,
+      },
     },
     openGraph: {
       title: t('title'),
@@ -61,15 +71,19 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
 }
 
 export default async function LocaleLayout({ children, params: { locale } }: Props) {
-  if (!routing.locales.includes(locale as any)) {
+  if (!isLocale(locale)) {
     notFound();
   }
+
+  // Enables next-intl static rendering for this locale during export.
+  setRequestLocale(locale);
 
   const messages = await getMessages();
 
   return (
     <ThemeProvider>
       <IntlProvider locale={locale} messages={messages}>
+        <HtmlLang locale={locale} />
         <JsonLd locale={locale} />
         {children}
       </IntlProvider>

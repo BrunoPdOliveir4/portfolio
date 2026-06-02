@@ -2,15 +2,17 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { GlowCard } from '@/components/ui/GlowCard';
+import { pick, formatPeriod } from '@/lib/cv-i18n';
 import type { Experience } from '@/types/cv';
 
 export function ExperienceCard({ experience }: { experience: Experience }) {
   const [expanded, setExpanded] = useState(false);
   const t = useTranslations('experience');
+  const locale = useLocale();
 
-  const bullets = experience.bulletsEn;
+  const bullets = pick(locale, experience.bullets, experience.bulletsEn);
   const visibleBullets = expanded ? bullets : bullets.slice(0, 2);
 
   return (
@@ -21,14 +23,14 @@ export function ExperienceCard({ experience }: { experience: Experience }) {
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-1 mb-3">
         <div>
           <h3 className="text-lg font-bold text-foreground">
-            {experience.roleEn}
+            {pick(locale, experience.role, experience.roleEn)}
           </h3>
           <p className="text-emerald-500 dark:text-emerald-400 font-mono text-sm">
             {experience.company}
           </p>
         </div>
         <span className="text-sm text-muted-foreground font-mono shrink-0">
-          {experience.period}
+          {formatPeriod(experience.periodStart, experience.periodEnd, locale)}
         </span>
       </div>
 

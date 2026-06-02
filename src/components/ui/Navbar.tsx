@@ -2,11 +2,12 @@
 
 import { useTranslations } from 'next-intl';
 import { ThemeToggle } from './ThemeToggle';
+import { LocaleSwitcher } from './LocaleSwitcher';
 import { Brand } from './Brand';
 import { cn } from '@/lib/utils';
 import { useState, useEffect } from 'react';
 
-const sections = ['terminal', 'experience', 'skills', 'architecture', 'projects'] as const;
+const sections = ['terminal', 'experience', 'skills', 'projects'] as const;
 
 export function Navbar() {
   const t = useTranslations('nav');
@@ -44,13 +45,15 @@ export function Navbar() {
               {t(s)}
             </a>
           ))}
-          <div className="flex items-center gap-2 ml-2">
+          <div className="flex items-center gap-3 ml-2">
+            <LocaleSwitcher />
             <ThemeToggle />
           </div>
         </div>
 
         {/* Mobile toggle */}
-        <div className="flex md:hidden items-center gap-2">
+        <div className="flex md:hidden items-center gap-3">
+          <LocaleSwitcher />
           <ThemeToggle />
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
