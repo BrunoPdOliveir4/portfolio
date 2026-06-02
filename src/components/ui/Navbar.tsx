@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { ThemeToggle } from './ThemeToggle';
+import { Brand } from './Brand';
 import { cn } from '@/lib/utils';
 import { useState, useEffect } from 'react';
 
@@ -28,8 +29,8 @@ export function Navbar() {
       )}
     >
       <div className="max-w-6xl mx-auto px-4 md:px-8 h-14 flex items-center justify-between">
-        <a href="#terminal" className="font-mono font-bold text-sm">
-          <span className="text-emerald-500">~/</span>dev.bpedroso
+        <a href="#terminal" aria-label="Bruno Pedroso — home" className="flex items-center">
+          <Brand />
         </a>
 
         {/* Desktop nav */}
