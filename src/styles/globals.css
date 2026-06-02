@@ -57,8 +57,3 @@ html {
 ::selection {
   background-color: rgba(16, 185, 129, 0.3);
 }
-
-/* React Flow overrides */
-.react-flow__attribution {
-  display: none !important;
-}

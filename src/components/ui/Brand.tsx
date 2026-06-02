@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-const LOGO_SRC = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/logo.svg`;
+const LOGO_SRC = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/logo.png`;
 
 /**
  * Brand mark for the navbar. Renders `public/logo.svg` once it exists and
@@ -25,7 +25,7 @@ export function Brand() {
     <img
       src={LOGO_SRC}
       alt="Bruno Pedroso"
-      className="h-7 w-auto"
+      className="h-9 w-auto md:h-10 drop-shadow-[0_1px_2px_rgba(0,0,0,0.25)]"
       onError={() => setLogoFailed(true)}
     />
   );
