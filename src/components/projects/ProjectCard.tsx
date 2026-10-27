@@ -82,11 +82,6 @@ export function ProjectCard({ project }: { project: Project }) {
               {t('liveDemo')} ↗
             </a>
           )}
-          {project.github && (
-            <a href={project.github} target="_blank" rel="noopener noreferrer" className={LINK_CLASS}>
-              {t('sourceCode')} ↗
-            </a>
-          )}
         </div>
 
         {notice && <p className="mt-3 text-xs text-amber-600 dark:text-amber-400">{notice}</p>}

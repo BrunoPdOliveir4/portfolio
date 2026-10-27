@@ -26,8 +26,7 @@
   },
   "projects": {
     "title": "Featured Projects",
-    "liveDemo": "View live demo",
-    "sourceCode": "Source code"
+    "liveDemo": "View live demo"
   },
   "github": {
     "title": "GitHub Activity",

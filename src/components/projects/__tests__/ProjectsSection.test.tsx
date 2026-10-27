@@ -31,7 +31,7 @@ describe('ProjectsSection', () => {
 
   it('shows the embedding notice for the OBS project', () => {
     render(<ProjectsSection />);
-    expect(screen.getByText(/Twitch login only works in a new tab/)).toBeInTheDocument();
+    expect(screen.getByText(/Twitch login doesn't work in desktop mode/)).toBeInTheDocument();
   });
 
   it('falls back to a placeholder when the screenshot fails to load', () => {
