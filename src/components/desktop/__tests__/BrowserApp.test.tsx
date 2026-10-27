@@ -13,13 +13,6 @@ describe('BrowserApp', () => {
     expect(screen.getByRole('textbox')).toHaveValue('https://projeto-r.vercel.app');
   });
 
-  it('offers the current page in a new tab', () => {
-    render(<BrowserApp initialUrl="https://obs-interactivescreen.onrender.com/" />);
-    const newTabLink = screen.getByRole('link', { name: 'Open in new tab' });
-    expect(newTabLink).toHaveAttribute('href', 'https://obs-interactivescreen.onrender.com/');
-    expect(newTabLink).toHaveAttribute('target', '_blank');
-  });
-
   it('shows the notice when one is given', () => {
     render(<BrowserApp notice="Login only works in a new tab." />);
     expect(screen.getByRole('note')).toHaveTextContent('Login only works in a new tab.');

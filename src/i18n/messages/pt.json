@@ -26,8 +26,7 @@
   },
   "projects": {
     "title": "Projetos em Destaque",
-    "liveDemo": "Ver demo ao vivo",
-    "sourceCode": "Código-fonte"
+    "liveDemo": "Ver demo ao vivo"
   },
   "github": {
     "title": "Atividade no GitHub",

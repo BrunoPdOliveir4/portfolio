@@ -133,19 +133,6 @@ export function BrowserApp({ initialUrl = HOME_URL, notice }: Props = {}) {
               spellCheck={false}
             />
           </div>
-
-          <a
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Open in new tab"
-            title="Open in new tab"
-            className="w-7 h-7 rounded flex items-center justify-center text-zinc-500 hover:bg-zinc-700 hover:text-zinc-300 transition-colors"
-          >
-            <svg className="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M9 2h5v5M14 2L7 9M12 9v4a1 1 0 01-1 1H3a1 1 0 01-1-1V5a1 1 0 011-1h4" />
-            </svg>
-          </a>
         </div>
 
         {/* Bookmarks bar */}
