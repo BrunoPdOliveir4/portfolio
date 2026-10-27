@@ -3,6 +3,7 @@ export type DesktopApp = {
   name: string;
   icon: string;
   command: string;
+  url?: string;
 };
 
 export type DesktopWindow = {

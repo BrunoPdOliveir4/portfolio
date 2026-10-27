@@ -19,6 +19,12 @@ export interface Experience {
   technologies: string[];
 }
 
+export interface ProjectDemo {
+  url: string;
+  notice?: string;
+  noticeEn?: string;
+}
+
 export interface Project {
   id: string;
   name: string;
@@ -27,6 +33,11 @@ export interface Project {
   descriptionEn: string;
   technologies: string[];
   github?: string;
+  featured?: boolean;
+  screenshot?: string;
+  highlights?: string[];
+  highlightsEn?: string[];
+  demo?: ProjectDemo;
 }
 
 export interface Education {

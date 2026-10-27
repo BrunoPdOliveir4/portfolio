@@ -21,6 +21,7 @@ const strings = {
     education: 'Formação',
     skills: 'Habilidades Técnicas',
     projects: 'Projetos',
+    liveDemo: 'Ver demo ao vivo',
     contact: 'Contato',
     location: 'Localização',
     phone: 'Telefone',
@@ -36,6 +37,7 @@ const strings = {
     education: 'Education',
     skills: 'Technical Skills',
     projects: 'Projects',
+    liveDemo: 'View live demo',
     contact: 'Contact Information',
     location: 'Location',
     phone: 'Phone',
@@ -166,11 +168,28 @@ function ProjectsContent({ locale }: PanelProps) {
           <p className="text-sm text-zinc-300 leading-relaxed mt-1">
             {pick(locale, proj.description, proj.descriptionEn)}
           </p>
+          {proj.highlights && (
+            <ul className="list-disc list-inside text-sm text-zinc-400 mt-2 space-y-0.5">
+              {(pick(locale, proj.highlights, proj.highlightsEn) ?? []).map((highlight) => (
+                <li key={highlight}>{highlight}</li>
+              ))}
+            </ul>
+          )}
           <div className="flex flex-wrap gap-1.5 mt-2">
             {proj.technologies.map((tech) => (
               <Tag key={tech}>{tech}</Tag>
             ))}
           </div>
+          {proj.demo && (
+            <a
+              href={proj.demo.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-2 text-xs text-emerald-400 hover:underline"
+            >
+              {t(locale).liveDemo} ↗
+            </a>
+          )}
         </div>
       ))}
     </div>

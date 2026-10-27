@@ -24,6 +24,11 @@
   "skills": {
     "title": "Technical Skills"
   },
+  "projects": {
+    "title": "Featured Projects",
+    "liveDemo": "View live demo",
+    "sourceCode": "Source code"
+  },
   "github": {
     "title": "GitHub Activity",
     "repositories": "Repositories"

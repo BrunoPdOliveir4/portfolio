@@ -2,6 +2,7 @@
 
 import { useMemo } from 'react';
 import { motion } from 'framer-motion';
+import { useLocale } from 'next-intl';
 import { MenuBar } from './MenuBar';
 import { Dock } from './Dock';
 import { DesktopIcon } from './DesktopIcon';
@@ -9,8 +10,9 @@ import { AppWindow } from './AppWindow';
 import { AppContent } from './AppContent';
 import { BrowserApp } from './BrowserApp';
 import { useDesktop } from './useDesktop';
-import { desktopApps, allDockApps, browserApp } from './apps';
+import { desktopApps, allDockApps, browserApp, demoProjects } from './apps';
 import { Terminal } from '@/components/terminal/Terminal';
+import { pick } from '@/lib/cv-i18n';
 
 type Props = {
   onSwitchToTerminal: () => void;
@@ -18,7 +20,14 @@ type Props = {
 
 const allAppsLookup = [...desktopApps, browserApp, { id: 'terminal', name: 'Terminal', icon: '>_', command: '' }];
 
+function demoNotice(appId: string, locale: string): string | undefined {
+  const project = demoProjects.find((p) => p.id === appId);
+  if (!project) return undefined;
+  return pick(locale, project.demo.notice, project.demo.noticeEn);
+}
+
 export function Desktop({ onSwitchToTerminal }: Props) {
+  const locale = useLocale();
   const {
     windows,
     openApp,
@@ -110,6 +119,24 @@ export function Desktop({ onSwitchToTerminal }: Props) {
 
           const app = desktopApps.find((a) => a.id === win.appId);
           if (!app) return null;
+
+          if (app.url) {
+            return (
+              <AppWindow
+                key={win.id}
+                window={win}
+                title={app.name}
+                onClose={() => closeWindow(win.id)}
+                onMinimize={() => minimizeWindow(win.id)}
+                onToggleMaximize={() => toggleMaximize(win.id)}
+                onFocus={() => focusWindow(win.id)}
+                onMove={(pos) => moveWindow(win.id, pos)}
+                onResize={(size) => resizeWindow(win.id, size)}
+              >
+                <BrowserApp initialUrl={app.url} notice={demoNotice(app.id, locale)} />
+              </AppWindow>
+            );
+          }
 
           return (
             <AppWindow

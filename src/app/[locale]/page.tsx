@@ -1,5 +1,6 @@
 import { ExperienceSection } from '@/components/experience/ExperienceSection';
 import { SkillsSection } from '@/components/skills/SkillsSection';
+import { ProjectsSection } from '@/components/projects/ProjectsSection';
 import { GitHubSection } from '@/components/github/GitHubSection';
 import { Navbar } from '@/components/ui/Navbar';
 import { Footer } from '@/components/ui/Footer';
@@ -28,6 +29,9 @@ export default async function HomePage({ params: { locale } }: { params: { local
 
         {/* Skills */}
         <SkillsSection />
+
+        {/* Featured projects */}
+        <ProjectsSection />
 
         {/* GitHub */}
         <GitHubSection repos={repos} />
