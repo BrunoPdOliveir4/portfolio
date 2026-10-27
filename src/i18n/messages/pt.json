@@ -24,6 +24,11 @@
   "skills": {
     "title": "Habilidades Técnicas"
   },
+  "projects": {
+    "title": "Projetos em Destaque",
+    "liveDemo": "Ver demo ao vivo",
+    "sourceCode": "Código-fonte"
+  },
   "github": {
     "title": "Atividade no GitHub",
     "repositories": "Repositórios"

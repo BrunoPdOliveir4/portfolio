@@ -1,11 +1,20 @@
 'use client';
 
-import { useState, useCallback, type KeyboardEvent } from 'react';
+import { useState, useCallback, useRef, type KeyboardEvent } from 'react';
+import { demoProjects } from './apps';
+
+const HOME_URL = 'https://github.com/BrunoPdOliveir4';
 
 const BOOKMARKS = [
-  { name: 'GitHub', url: 'https://github.com/BrunoPdOliveir4' },
+  { name: 'GitHub', url: HOME_URL },
   { name: 'LinkedIn', url: 'https://linkedin.com/in/b-pedroso' },
+  ...demoProjects.map((project) => ({ name: project.nameEn, url: project.demo.url })),
 ];
+
+type Props = {
+  initialUrl?: string;
+  notice?: string;
+};
 
 function normalizeUrl(input: string): string {
   const trimmed = input.trim();
@@ -15,10 +24,11 @@ function normalizeUrl(input: string): string {
   return `https://www.google.com/search?igu=1&q=${encodeURIComponent(trimmed)}`;
 }
 
-export function BrowserApp() {
-  const [url, setUrl] = useState('https://github.com/BrunoPdOliveir4');
-  const [inputValue, setInputValue] = useState('https://github.com/BrunoPdOliveir4');
-  const [history, setHistory] = useState<string[]>(['https://github.com/BrunoPdOliveir4']);
+export function BrowserApp({ initialUrl = HOME_URL, notice }: Props = {}) {
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [url, setUrl] = useState(initialUrl);
+  const [inputValue, setInputValue] = useState(initialUrl);
+  const [history, setHistory] = useState<string[]>([initialUrl]);
   const [historyIndex, setHistoryIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -58,14 +68,12 @@ export function BrowserApp() {
 
   const reload = () => {
     setIsLoading(true);
-    setUrl((prev) => prev);
     // Force iframe reload by briefly clearing src
-    const iframe = document.querySelector<HTMLIFrameElement>('#browser-iframe');
-    if (iframe) {
-      const src = iframe.src;
-      iframe.src = '';
-      iframe.src = src;
-    }
+    const iframe = iframeRef.current;
+    if (!iframe) return;
+    const src = iframe.src;
+    iframe.src = '';
+    iframe.src = src;
   };
 
   return (
@@ -125,6 +133,19 @@ export function BrowserApp() {
               spellCheck={false}
             />
           </div>
+
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open in new tab"
+            title="Open in new tab"
+            className="w-7 h-7 rounded flex items-center justify-center text-zinc-500 hover:bg-zinc-700 hover:text-zinc-300 transition-colors"
+          >
+            <svg className="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M9 2h5v5M14 2L7 9M12 9v4a1 1 0 01-1 1H3a1 1 0 01-1-1V5a1 1 0 011-1h4" />
+            </svg>
+          </a>
         </div>
 
         {/* Bookmarks bar */}
@@ -145,13 +166,20 @@ export function BrowserApp() {
         </div>
       </div>
 
+      {notice && (
+        <div role="note" className="shrink-0 px-3 py-1.5 bg-amber-500/10 border-b border-amber-500/20 text-[11px] text-amber-300">
+          {notice}
+        </div>
+      )}
+
       {/* Browser viewport */}
       <div className="flex-1 relative bg-white">
         <iframe
-          id="browser-iframe"
+          ref={iframeRef}
           src={url}
           className="w-full h-full border-0"
-          sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+          sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
+          allow="fullscreen; autoplay; gamepad"
           onLoad={() => setIsLoading(false)}
           title="Browser"
         />

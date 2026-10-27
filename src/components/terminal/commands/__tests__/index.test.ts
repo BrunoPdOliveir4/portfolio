@@ -75,6 +75,13 @@ describe('executeCommand', () => {
     expect(allContent).toContain('Lead Message Automation');
   });
 
+  it('projects lists featured projects with their live demo URLs', () => {
+    const allContent = executeCommand('projects', 'en').output.map((o) => o.content).join('\n');
+    expect(allContent).toContain('Projeto R');
+    expect(allContent).toContain('Demo: https://projeto-r.vercel.app');
+    expect(allContent).toContain('Demo: https://obs-interactivescreen.onrender.com/');
+  });
+
   // --- contact ---
   it('contact returns contact info', () => {
     const result = executeCommand('contact', 'en');

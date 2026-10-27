@@ -11,7 +11,7 @@ export function GitHubSection({ repos }: Props) {
   const t = useTranslations('github');
 
   return (
-    <Section id="projects" title={t('title')}>
+    <Section id="github" title={t('title')}>
       <h3 className="text-sm font-mono font-bold text-emerald-500 dark:text-emerald-400 mb-4">
         {'// '}{t('repositories')}
       </h3>

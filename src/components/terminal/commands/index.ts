@@ -70,6 +70,7 @@ const commands: Record<string, CommandHandler> = {
       `\x1b[32m${pick(locale, proj.name, proj.nameEn)}\x1b[0m`,
       `  ${pick(locale, proj.description, proj.descriptionEn)}`,
       `  Tech: ${proj.technologies.join(', ')}`,
+      ...(proj.demo ? [`  Demo: ${proj.demo.url}`] : []),
     ].join('\n'),
   })),
 
