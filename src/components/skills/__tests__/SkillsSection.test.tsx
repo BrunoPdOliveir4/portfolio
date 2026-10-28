@@ -10,7 +10,7 @@ describe('SkillsSection', () => {
   it('renders skill categories', () => {
     render(<SkillsSection />);
     expect(screen.getByText('// Languages')).toBeInTheDocument();
-    expect(screen.getByText('// Back-End')).toBeInTheDocument();
+    expect(screen.getByText('// Backend & Architecture')).toBeInTheDocument();
   });
 
   it('renders individual skills', () => {

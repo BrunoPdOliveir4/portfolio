@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "Bruno Pedroso — Engenheiro Back-End",
-    "description": "Portfólio interativo de Bruno Pedroso, Engenheiro de Software Back-End especializado em TypeScript, Python, sistemas distribuídos e orquestração de agentes de IA."
+    "title": "Bruno Pedroso — Engenheiro de Software Sênior",
+    "description": "Portfólio de Bruno Pedroso, Engenheiro de Software Sênior e Tech Lead especializado em agentes de IA, orquestração multiagente e arquitetura back-end escalável."
   },
   "nav": {
     "terminal": "Terminal",
@@ -43,19 +43,18 @@
     "builtWith": "Todos os direitos reservados - Bruno Pedroso de Oliveira"
   },
   "hero": {
-    "subtitle": "Engenheiro Back-End · TypeScript · Python · Sistemas Distribuídos",
     "downloadCv": "Baixar CV",
     "greeting": "Olá, eu sou",
-    "pitch": "Construo back-ends multi-tenant, plataformas orientadas a eventos e orquestração de agentes de IA, com foco em performance, segurança e manutenibilidade.",
-    "availability": "Disponível para remoto · Brasil e internacional",
+    "pitch": "Tech Lead especializado em agentes de IA, orquestração multiagente e arquitetura back-end escalável. Levo LLMs para sistemas distribuídos em produção com Python e TypeScript.",
     "openTerminal": "abrir terminal interativo",
     "metricCompanies": "empresas atendidas pela plataforma de agentes",
-    "metricRequests": "requisições por dia em produção",
-    "metricLatency": "resposta dos agentes (antes 20–30 s)"
+    "metricRequests": "requisições por dia",
+    "metricLatency": "de resposta dos agentes (antes 20–30 s)",
+    "metricsTitle": "Em produção na NextIA"
   },
   "contact": {
     "title": "Vamos conversar",
-    "subtitle": "Aberto a vagas remotas, no Brasil e no exterior. O caminho mais rápido é o email.",
+    "subtitle": "Para vagas, projetos ou uma conversa sobre arquitetura, o caminho mais rápido é o email.",
     "email": "Enviar email",
     "linkedin": "LinkedIn",
     "downloadCv": "Baixar CV"
@@ -90,6 +89,8 @@
     "howIWork": "Como trabalho",
     "education": "Formação",
     "uses": "Ferramentas",
-    "usesNote": "O que uso no dia a dia."
+    "usesNote": "O que uso no dia a dia.",
+    "certifications": "Certificações",
+    "languages": "Idiomas"
   }
 }

@@ -9,7 +9,7 @@ export const ogImage = {
   url: `${basePath}/opengraph-image.png`,
   width: 1200,
   height: 630,
-  alt: 'Bruno Pedroso — Back-End Engineer',
+  alt: 'Bruno Pedroso — Senior Software Engineer',
 };
 
 type PageMetadataInput = {

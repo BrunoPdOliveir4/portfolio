@@ -5,7 +5,7 @@ import { SkillChip } from './SkillChip';
 import { pick } from '@/lib/cv-i18n';
 import { cv } from '@/data/cv';
 
-const highlightedSkills = ['TypeScript', 'Python', 'FastAPI', 'Node.js', 'RabbitMQ', 'PostgreSQL', 'Docker', 'ADK', 'MCP'];
+const highlightedSkills = ['Python', 'TypeScript', 'AI Agents', 'LangGraph', 'ADK', 'MCP', 'FastAPI', 'Node.js', 'RabbitMQ', 'PostgreSQL', 'Docker'];
 
 export function SkillsSection({ index }: { index?: number }) {
   const t = useTranslations('skills');

@@ -2,11 +2,16 @@ import { render, screen } from '@/test-utils/render';
 import { Hero } from '../Hero';
 
 describe('Hero', () => {
-  it('leads with name, title and availability', () => {
+  it('leads with name and title, keeping availability for the About page', () => {
     render(<Hero />);
     expect(screen.getByRole('heading', { level: 1, name: 'Bruno Pedroso de Oliveira' })).toBeInTheDocument();
-    expect(screen.getByText('Back-End Software Engineer')).toBeInTheDocument();
-    expect(screen.getByText('Open to remote · Brazil and international')).toBeInTheDocument();
+    expect(screen.getByText('Senior Software Engineer')).toBeInTheDocument();
+    expect(screen.queryByText(/Open to remote/)).not.toBeInTheDocument();
+  });
+
+  it('attributes the production metrics to NextIA', () => {
+    render(<Hero />);
+    expect(screen.getByText('// In production at NextIA')).toBeInTheDocument();
   });
 
   it('offers the CV as a download', () => {

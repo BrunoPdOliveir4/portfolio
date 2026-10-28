@@ -47,6 +47,13 @@ export interface Education {
   period: string;
 }
 
+export interface SpokenLanguage {
+  name: string;
+  nameEn: string;
+  level: string;
+  levelEn: string;
+}
+
 export interface SkillCategory {
   category: string;
   categoryEn: string;
@@ -63,6 +70,8 @@ export interface CV {
   experience: Experience[];
   projects: Project[];
   education: Education[];
+  certifications: string[];
+  languages: SpokenLanguage[];
   skills: SkillCategory[];
 }
 

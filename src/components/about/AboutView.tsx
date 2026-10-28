@@ -79,6 +79,27 @@ export function AboutView() {
             </li>
           ))}
         </ul>
+        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
+          <div>
+            <h3 className="font-mono text-xs text-steel-500 dark:text-steel-400">{`// ${t('certifications')}`}</h3>
+            <ul className="mt-2 space-y-1 text-sm text-foreground">
+              {cv.certifications.map((certification) => (
+                <li key={certification}>{certification}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-mono text-xs text-steel-500 dark:text-steel-400">{`// ${t('languages')}`}</h3>
+            <ul className="mt-2 space-y-1 text-sm text-foreground">
+              {cv.languages.map((language) => (
+                <li key={language.nameEn}>
+                  {pick(locale, language.name, language.nameEn)}{' '}
+                  <span className="text-muted-foreground">— {pick(locale, language.level, language.levelEn)}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </Block>
 
       <Block id="uses" title={t('uses')}>

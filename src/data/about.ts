@@ -5,12 +5,12 @@ import type { About } from '@/types/about';
 export const about: About = {
   story: [
     'Antes do código veio a música: me formei em Educação Musical pela Universidade Católica de Santos. Em 2023 comecei o bacharelado em Engenharia de Software na Jala University e, em 2024, entrei no mercado como desenvolvedor back-end.',
-    'Desde então trabalhei com APIs em Node.js e TypeScript, arquitetura limpa e integrações com serviços externos. Hoje, na NextIA, construo uma plataforma multi-tenant de orquestração de agentes de IA que atende cerca de 50 empresas, e faço um MBA em Arquitetura de Software com IA.',
+    'Construí APIs em Node.js e TypeScript e, na NextIA, uma plataforma multi-tenant de agentes de IA com LangGraph, ADK e MCP que atendia cerca de 50 empresas. Hoje sou Engenheiro de Software Sênior e Tech Lead na Accenture, conduzindo a arquitetura de projetos corporativos para clientes globais, e faço um MBA em Arquitetura de Software.',
     'Gosto de problemas em que a arquitetura faz diferença: sistemas distribuídos, mensageria e tempo real. Nos projetos pessoais, isso virou um RPG multiplayer com servidor autoritativo e um overlay interativo para lives.',
   ],
   storyEn: [
-    'Music came before code: I graduated in Music Education from Universidade Católica de Santos. In 2023 I started a Bachelor in Software Engineering at Jala University, and in 2024 I joined the industry as a back-end developer.',
-    'Since then I have built APIs with Node.js and TypeScript, applied clean architecture, and integrated external services. Today at NextIA I build a multi-tenant AI agent orchestration platform serving about 50 companies, while taking an MBA in Software Architecture with AI.',
+    'Music came before code: I graduated in Music Education from Universidade Católica de Santos. In 2023 I started a B.Sc. in Software Engineering at Jala University, and in 2024 I joined the industry as a back-end developer.',
+    'I built APIs with Node.js and TypeScript and, at NextIA, a multi-tenant AI agent platform with LangGraph, ADK, and MCP serving about 50 companies. Today I am a Senior Software Engineer and Tech Lead at Accenture, driving the architecture of enterprise projects for global clients, while taking an MBA in Software Architecture.',
     'I enjoy problems where architecture makes the difference: distributed systems, messaging, and real time. In side projects, that became a multiplayer RPG with an authoritative server and an interactive overlay for live streams.',
   ],
   targetRoles: ['Senior Backend Engineer', 'Enterprise Solution Architect', 'Security Architect'],

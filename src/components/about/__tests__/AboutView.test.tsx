@@ -19,6 +19,13 @@ describe('AboutView', () => {
   it('uses the English copy for the en locale', () => {
     render(<AboutView />);
     expect(screen.getByText(/Music came before code/)).toBeInTheDocument();
-    expect(screen.getByText('MBA in Software Architecture with AI')).toBeInTheDocument();
+    expect(screen.getByText('MBA in Software Architecture')).toBeInTheDocument();
+  });
+
+  it('lists certifications and spoken languages from the CV', () => {
+    render(<AboutView />);
+    expect(screen.getByText('Introduction to Ethical Hacking')).toBeInTheDocument();
+    expect(screen.getByText('English')).toBeInTheDocument();
+    expect(screen.getByText(/Full professional proficiency/)).toBeInTheDocument();
   });
 });

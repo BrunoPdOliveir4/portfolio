@@ -9,7 +9,7 @@ describe('ExperienceSection', () => {
 
   it('renders experience cards', () => {
     render(<ExperienceSection />);
-    expect(screen.getByText('Mid-Level Back-End Engineer II')).toBeInTheDocument();
+    expect(screen.getByText('Senior Software Engineer / Tech Lead')).toBeInTheDocument();
     expect(screen.getByText('NextIA')).toBeInTheDocument();
   });
 });

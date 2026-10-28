@@ -32,15 +32,7 @@ export function Hero() {
       />
 
       <div className="relative max-w-6xl mx-auto px-4 md:px-8 pt-16 pb-20 md:pt-28 md:pb-28">
-        <p className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 font-mono text-xs text-emerald-700 dark:text-emerald-300">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-          </span>
-          {t('availability')}
-        </p>
-
-        <p className="mt-8 font-mono text-sm text-muted-foreground">{t('greeting')}</p>
+        <p className="font-mono text-sm text-muted-foreground">{t('greeting')}</p>
         <h1 className="mt-2 text-4xl md:text-6xl font-bold font-mono tracking-tight">
           <span className="bg-gradient-to-r from-emerald-400 to-steel-400 bg-clip-text text-transparent">
             {cv.name}
@@ -71,7 +63,10 @@ export function Hero() {
           ))}
         </div>
 
-        <dl className="mt-14 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl">
+        <p className="mt-14 mb-3 font-mono text-xs tracking-widest text-steel-500 dark:text-steel-400">
+          {`// ${t('metricsTitle')}`}
+        </p>
+        <dl className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl">
           {metrics.map((metric) => (
             <div key={metric.label} className="rounded-lg border border-border bg-card/60 dark:bg-zinc-900/40 px-4 py-3 backdrop-blur-sm">
               <dt className="sr-only">{t(metric.label)}</dt>

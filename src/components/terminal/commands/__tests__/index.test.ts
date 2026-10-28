@@ -40,7 +40,7 @@ describe('executeCommand', () => {
   it('whoami returns name and title', () => {
     const result = executeCommand('whoami', 'en');
     expect(result.output[0].content).toContain('Bruno Pedroso');
-    expect(result.output[0].content).toContain('Back-End');
+    expect(result.output[0].content).toContain('Senior Software Engineer');
   });
 
   // --- skills ---

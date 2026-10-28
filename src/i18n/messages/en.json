@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "Bruno Pedroso — Back-End Engineer",
-    "description": "Interactive portfolio of Bruno Pedroso, Back-End Software Engineer specialized in TypeScript, Python, distributed systems, and AI agent orchestration."
+    "title": "Bruno Pedroso — Senior Software Engineer",
+    "description": "Portfolio of Bruno Pedroso, Senior Software Engineer and Tech Lead specializing in AI agents, multi-agent orchestration, and scalable backend architecture."
   },
   "nav": {
     "terminal": "Terminal",
@@ -43,19 +43,18 @@
     "builtWith": "All rights reserved - Bruno Pedroso de Oliveira"
   },
   "hero": {
-    "subtitle": "Back-End Engineer · TypeScript · Python · Distributed Systems",
     "downloadCv": "Download CV",
     "greeting": "Hi, I'm",
-    "pitch": "I build multi-tenant back-ends, event-driven platforms, and AI agent orchestration, with a focus on performance, security, and maintainability.",
-    "availability": "Open to remote · Brazil and international",
+    "pitch": "Tech Lead specializing in AI agents, multi-agent orchestration, and scalable backend architecture. I bring LLMs into distributed systems in production with Python and TypeScript.",
     "openTerminal": "open interactive terminal",
     "metricCompanies": "companies served by the agent platform",
-    "metricRequests": "requests per day in production",
-    "metricLatency": "agent response time (down from 20–30 s)"
+    "metricRequests": "requests per day",
+    "metricLatency": "agent response time (down from 20–30 s)",
+    "metricsTitle": "In production at NextIA"
   },
   "contact": {
     "title": "Let's talk",
-    "subtitle": "Open to remote roles, in Brazil and abroad. Email is the fastest way to reach me.",
+    "subtitle": "For roles, projects, or a chat about architecture, email is the fastest way to reach me.",
     "email": "Send email",
     "linkedin": "LinkedIn",
     "downloadCv": "Download CV"
@@ -90,6 +89,8 @@
     "howIWork": "How I work",
     "education": "Education",
     "uses": "Uses",
-    "usesNote": "What I use day to day."
+    "usesNote": "What I use day to day.",
+    "certifications": "Certifications",
+    "languages": "Languages"
   }
 }
