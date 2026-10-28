@@ -1,4 +1,4 @@
-import type { GitHubRepo, GitHubCommit } from '@/types/github';
+import type { GitHubRepo, GitHubUser } from '@/types/github';
 
 const GITHUB_USERNAME = 'BrunoPdOliveir4';
 const GITHUB_API = 'https://api.github.com';
@@ -13,26 +13,11 @@ export async function fetchRepos(): Promise<GitHubRepo[]> {
   return res.json();
 }
 
-export async function fetchCommits(): Promise<GitHubCommit[]> {
-  const res = await fetch(
-    `${GITHUB_API}/users/${GITHUB_USERNAME}/events?per_page=30`,
-    { cache: 'force-cache' }
-  );
+/** Total public repos on the profile, or null when the API is unavailable at build time. */
+export async function fetchPublicRepoCount(): Promise<number | null> {
+  const res = await fetch(`${GITHUB_API}/users/${GITHUB_USERNAME}`, { cache: 'force-cache' });
 
-  if (!res.ok) return [];
-
-  const events = await res.json();
-
-  return events
-    .filter((e: any) => e.type === 'PushEvent')
-    .flatMap((e: any) =>
-      (e.payload.commits || []).map((c: any) => ({
-        sha: c.sha,
-        message: c.message,
-        date: e.created_at,
-        repo: e.repo.name.replace(`${GITHUB_USERNAME}/`, ''),
-        url: `https://github.com/${e.repo.name}/commit/${c.sha}`,
-      }))
-    )
-    .slice(0, 20);
+  if (!res.ok) return null;
+  const user: GitHubUser = await res.json();
+  return user.public_repos;
 }

@@ -2,6 +2,7 @@
 
 import { NextIntlClientProvider } from 'next-intl';
 import { type ReactNode } from 'react';
+import { TIME_ZONE } from '@/i18n/config';
 
 type Props = {
   locale: string;
@@ -11,7 +12,7 @@ type Props = {
 
 export function IntlProvider({ locale, messages, children }: Props) {
   return (
-    <NextIntlClientProvider locale={locale} messages={messages}>
+    <NextIntlClientProvider locale={locale} messages={messages} timeZone={TIME_ZONE}>
       {children}
     </NextIntlClientProvider>
   );

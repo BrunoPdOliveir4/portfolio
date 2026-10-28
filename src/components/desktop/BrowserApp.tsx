@@ -13,7 +13,6 @@ const BOOKMARKS = [
 
 type Props = {
   initialUrl?: string;
-  notice?: string;
 };
 
 function normalizeUrl(input: string): string {
@@ -24,7 +23,7 @@ function normalizeUrl(input: string): string {
   return `https://www.google.com/search?igu=1&q=${encodeURIComponent(trimmed)}`;
 }
 
-export function BrowserApp({ initialUrl = HOME_URL, notice }: Props = {}) {
+export function BrowserApp({ initialUrl = HOME_URL }: Props = {}) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [url, setUrl] = useState(initialUrl);
   const [inputValue, setInputValue] = useState(initialUrl);
@@ -152,12 +151,6 @@ export function BrowserApp({ initialUrl = HOME_URL, notice }: Props = {}) {
           ))}
         </div>
       </div>
-
-      {notice && (
-        <div role="note" className="shrink-0 px-3 py-1.5 bg-amber-500/10 border-b border-amber-500/20 text-[11px] text-amber-300">
-          {notice}
-        </div>
-      )}
 
       {/* Browser viewport */}
       <div className="flex-1 relative bg-white">

@@ -146,8 +146,8 @@ export const cv: CV = {
       ],
       demo: {
         url: 'https://obs-interactivescreen.onrender.com/',
-        notice: 'O login com Twitch não funciona no modo desktop: abra pelo link da demo em Projetos em Destaque. O servidor pode levar cerca de 50 s para acordar.',
-        noticeEn: 'Twitch login doesn\'t work in desktop mode: open it from the demo link in Featured Projects. The server may take about 50 s to wake up.',
+        notice: 'O servidor pode levar cerca de 50 s para acordar.',
+        noticeEn: 'The server may take about 50 s to wake up.',
       },
     },
   ],

@@ -11,10 +11,7 @@ export interface GitHubRepo {
   topics: string[];
 }
 
-export interface GitHubCommit {
-  sha: string;
-  message: string;
-  date: string;
-  repo: string;
-  url: string;
+export interface GitHubUser {
+  login: string;
+  public_repos: number;
 }

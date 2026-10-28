@@ -8,6 +8,10 @@ import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { IntlProvider } from '@/components/providers/IntlProvider';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { HtmlLang } from '@/components/seo/HtmlLang';
+import { Navbar } from '@/components/ui/Navbar';
+import { Footer } from '@/components/ui/Footer';
+import { MouseSpotlight } from '@/components/ui/MouseSpotlight';
+import { ogImage } from '@/lib/metadata';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -26,16 +30,6 @@ function isLocale(locale: string): locale is Locale {
 // image), so keeping `/portfolio` out of metadataBase avoids double-prefixing.
 const SITE_ORIGIN = 'https://brunopdoliveir4.github.io';
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
-
-// Static OG image lives in public/ so GitHub Pages serves it with the correct
-// image/png content-type (an extensionless dynamic route is served as
-// octet-stream and rejected by some scrapers like LinkedIn).
-const ogImage = {
-  url: `${basePath}/opengraph-image.png`,
-  width: 1200,
-  height: 630,
-  alt: 'Bruno Pedroso — Back-End Engineer',
-};
 
 export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'metadata' });
@@ -85,7 +79,10 @@ export default async function LocaleLayout({ children, params: { locale } }: Pro
       <IntlProvider locale={locale} messages={messages}>
         <HtmlLang locale={locale} />
         <JsonLd locale={locale} />
+        <MouseSpotlight />
+        <Navbar />
         {children}
+        <Footer />
       </IntlProvider>
     </ThemeProvider>
   );

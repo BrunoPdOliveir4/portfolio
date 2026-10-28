@@ -7,7 +7,10 @@
     "terminal": "Terminal",
     "experience": "Experience",
     "skills": "Skills",
-    "projects": "Projects"
+    "projects": "Projects",
+    "about": "About",
+    "cv": "CV",
+    "openTerminal": "Open terminal"
   },
   "terminal": {
     "boot1": "Initializing portfolio v2.0...",
@@ -26,17 +29,67 @@
   },
   "projects": {
     "title": "Featured Projects",
-    "liveDemo": "View live demo"
+    "liveDemo": "View live demo",
+    "caseStudy": "Read case study"
   },
   "github": {
-    "title": "GitHub Activity",
-    "repositories": "Repositories"
+    "title": "On GitHub",
+    "repositories": "Repositories",
+    "publicRepos": "public repositories",
+    "topLanguages": "Most used languages",
+    "viewProfile": "View GitHub profile"
   },
   "footer": {
     "builtWith": "All rights reserved - Bruno Pedroso de Oliveira"
   },
   "hero": {
     "subtitle": "Back-End Engineer · TypeScript · Python · Distributed Systems",
+    "downloadCv": "Download CV",
+    "greeting": "Hi, I'm",
+    "pitch": "I build multi-tenant back-ends, event-driven platforms, and AI agent orchestration, with a focus on performance, security, and maintainability.",
+    "availability": "Open to remote · Brazil and international",
+    "openTerminal": "open interactive terminal",
+    "metricCompanies": "companies served by the agent platform",
+    "metricRequests": "requests per day in production",
+    "metricLatency": "agent response time (down from 20–30 s)"
+  },
+  "contact": {
+    "title": "Let's talk",
+    "subtitle": "Open to remote roles, in Brazil and abroad. Email is the fastest way to reach me.",
+    "email": "Send email",
+    "linkedin": "LinkedIn",
     "downloadCv": "Download CV"
+  },
+  "terminalPage": {
+    "title": "Terminal",
+    "description": "Explore Bruno Pedroso's resume through an interactive terminal and a desktop mode.",
+    "back": "Back to portfolio",
+    "hint": "Type 'help', or click the monitor icon for desktop mode."
+  },
+  "caseStudy": {
+    "back": "All projects",
+    "problem": "The challenge",
+    "architecture": "Architecture",
+    "decisions": "Technical decisions",
+    "decisionTopic": "Topic",
+    "decisionChoice": "Decision",
+    "decisionWhy": "Why",
+    "results": "Results",
+    "learnings": "What I learned",
+    "gallery": "Images",
+    "liveDemo": "View live demo",
+    "sourceCode": "Source code",
+    "stack": "Stack",
+    "nextProject": "Next project"
+  },
+  "about": {
+    "title": "About",
+    "metaDescription": "About Bruno Pedroso: background, target roles, working principles, and tools.",
+    "story": "Story",
+    "lookingFor": "What I'm looking for",
+    "howIWork": "How I work",
+    "education": "Education",
+    "uses": "Uses",
+    "usesNote": "What I use day to day."
   }
 }

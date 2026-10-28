@@ -7,7 +7,10 @@
     "terminal": "Terminal",
     "experience": "Experiência",
     "skills": "Habilidades",
-    "projects": "Projetos"
+    "projects": "Projetos",
+    "about": "Sobre",
+    "cv": "CV",
+    "openTerminal": "Abrir terminal"
   },
   "terminal": {
     "boot1": "Inicializando portfólio v2.0...",
@@ -26,17 +29,67 @@
   },
   "projects": {
     "title": "Projetos em Destaque",
-    "liveDemo": "Ver demo ao vivo"
+    "liveDemo": "Ver demo ao vivo",
+    "caseStudy": "Ver case study"
   },
   "github": {
-    "title": "Atividade no GitHub",
-    "repositories": "Repositórios"
+    "title": "No GitHub",
+    "repositories": "Repositórios",
+    "publicRepos": "repositórios públicos",
+    "topLanguages": "Linguagens mais usadas",
+    "viewProfile": "Ver perfil no GitHub"
   },
   "footer": {
     "builtWith": "Todos os direitos reservados - Bruno Pedroso de Oliveira"
   },
   "hero": {
     "subtitle": "Engenheiro Back-End · TypeScript · Python · Sistemas Distribuídos",
+    "downloadCv": "Baixar CV",
+    "greeting": "Olá, eu sou",
+    "pitch": "Construo back-ends multi-tenant, plataformas orientadas a eventos e orquestração de agentes de IA, com foco em performance, segurança e manutenibilidade.",
+    "availability": "Disponível para remoto · Brasil e internacional",
+    "openTerminal": "abrir terminal interativo",
+    "metricCompanies": "empresas atendidas pela plataforma de agentes",
+    "metricRequests": "requisições por dia em produção",
+    "metricLatency": "resposta dos agentes (antes 20–30 s)"
+  },
+  "contact": {
+    "title": "Vamos conversar",
+    "subtitle": "Aberto a vagas remotas, no Brasil e no exterior. O caminho mais rápido é o email.",
+    "email": "Enviar email",
+    "linkedin": "LinkedIn",
     "downloadCv": "Baixar CV"
+  },
+  "terminalPage": {
+    "title": "Terminal",
+    "description": "Explore o currículo de Bruno Pedroso por um terminal interativo e um modo desktop.",
+    "back": "Voltar ao portfólio",
+    "hint": "Digite 'help' ou clique no ícone de monitor para o modo desktop."
+  },
+  "caseStudy": {
+    "back": "Todos os projetos",
+    "problem": "O desafio",
+    "architecture": "Arquitetura",
+    "decisions": "Decisões técnicas",
+    "decisionTopic": "Tema",
+    "decisionChoice": "Decisão",
+    "decisionWhy": "Por quê",
+    "results": "Resultados",
+    "learnings": "O que aprendi",
+    "gallery": "Imagens",
+    "liveDemo": "Ver demo ao vivo",
+    "sourceCode": "Código-fonte",
+    "stack": "Stack",
+    "nextProject": "Próximo projeto"
+  },
+  "about": {
+    "title": "Sobre",
+    "metaDescription": "Sobre Bruno Pedroso: trajetória, cargos que procura, princípios de trabalho e ferramentas.",
+    "story": "História",
+    "lookingFor": "O que procuro",
+    "howIWork": "Como trabalho",
+    "education": "Formação",
+    "uses": "Ferramentas",
+    "usesNote": "O que uso no dia a dia."
   }
 }
