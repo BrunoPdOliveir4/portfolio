@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { GlowCard } from '@/components/ui/GlowCard';
+import { Link } from '@/i18n/routing';
 import { pick } from '@/lib/cv-i18n';
 import type { Project } from '@/types/cv';
 
@@ -32,7 +33,7 @@ function ProjectScreenshot({ name, screenshot }: { name: string; screenshot?: st
       alt={name}
       loading="lazy"
       onError={() => setHasFailed(true)}
-      className="aspect-video w-full object-cover"
+      className="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
     />
   );
 }
@@ -45,11 +46,17 @@ export function ProjectCard({ project }: { project: Project }) {
   const notice = project.demo && pick(locale, project.demo.notice, project.demo.noticeEn);
 
   return (
-    <GlowCard className="h-full flex flex-col overflow-hidden p-0">
-      <ProjectScreenshot name={name} screenshot={project.screenshot} />
+    <GlowCard className="group h-full flex flex-col overflow-hidden p-0">
+      <Link href={`/projects/${project.id}`} tabIndex={-1} aria-hidden="true" className="block overflow-hidden">
+        <ProjectScreenshot name={name} screenshot={project.screenshot} />
+      </Link>
 
       <div className="flex flex-1 flex-col p-6">
-        <h3 className="text-lg font-bold font-mono text-foreground">{name}</h3>
+        <h3 className="text-lg font-bold font-mono text-foreground">
+          <Link href={`/projects/${project.id}`} className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+            {name}
+          </Link>
+        </h3>
         <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
           {pick(locale, project.description, project.descriptionEn)}
         </p>
@@ -77,6 +84,9 @@ export function ProjectCard({ project }: { project: Project }) {
         </div>
 
         <div className="mt-auto pt-5 flex flex-wrap items-center gap-4">
+          <Link href={`/projects/${project.id}`} className={LINK_CLASS}>
+            {t('caseStudy')} →
+          </Link>
           {project.demo && (
             <a href={project.demo.url} target="_blank" rel="noopener noreferrer" className={LINK_CLASS}>
               {t('liveDemo')} ↗

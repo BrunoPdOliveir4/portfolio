@@ -2,7 +2,6 @@
 
 import { useState, useCallback } from 'react';
 import type { DesktopWindow } from '@/types/desktop';
-import { isBrowserApp } from './apps';
 
 let windowId = 0;
 let topZ = 10;
@@ -39,7 +38,7 @@ export function useDesktop() {
       }
 
       topZ++;
-      const size = isBrowserApp(appId)
+      const size = appId === 'browser'
         ? { width: 900, height: 600 }
         : DEFAULT_SIZE;
 

@@ -2,13 +2,6 @@ import { cv } from '@/data/cv';
 import type { Project, ProjectDemo } from '@/types/cv';
 import type { DesktopApp } from '@/types/desktop';
 
-const PROJECT_ICONS: Record<string, string> = {
-  'projeto-r': '🎮',
-  'obs-interactive': '📺',
-};
-
-const DEFAULT_PROJECT_ICON = '🚀';
-
 type DemoProject = Project & { demo: ProjectDemo };
 
 function isDemoProject(project: Project): project is DemoProject {
@@ -16,14 +9,6 @@ function isDemoProject(project: Project): project is DemoProject {
 }
 
 export const demoProjects: DemoProject[] = cv.projects.filter(isDemoProject);
-
-const projectApps: DesktopApp[] = demoProjects.map((project) => ({
-  id: project.id,
-  name: project.nameEn,
-  icon: PROJECT_ICONS[project.id] ?? DEFAULT_PROJECT_ICON,
-  command: '',
-  url: project.demo.url,
-}));
 
 export const desktopApps: DesktopApp[] = [
   { id: 'whoami', name: 'About Me', icon: '👤', command: 'whoami' },
@@ -34,7 +19,6 @@ export const desktopApps: DesktopApp[] = [
   { id: 'contact', name: 'Contact', icon: '📧', command: 'contact' },
   { id: 'curriculum', name: 'Resume', icon: '📄', command: 'curriculum' },
   { id: 'secret', name: 'Secret', icon: '🔮', command: 'secret' },
-  ...projectApps,
 ];
 
 export const browserApp: DesktopApp = {
@@ -52,7 +36,3 @@ export const terminalApp: DesktopApp = {
 };
 
 export const allDockApps: DesktopApp[] = [...desktopApps, browserApp, terminalApp];
-
-export function isBrowserApp(appId: string): boolean {
-  return appId === browserApp.id || projectApps.some((app) => app.id === appId);
-}

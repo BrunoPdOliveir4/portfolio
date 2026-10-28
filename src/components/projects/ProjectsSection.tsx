@@ -5,11 +5,11 @@ import { cv } from '@/data/cv';
 
 const featuredProjects = cv.projects.filter((project) => project.featured);
 
-export function ProjectsSection() {
+export function ProjectsSection({ index }: { index?: number }) {
   const t = useTranslations('projects');
 
   return (
-    <Section id="projects" title={t('title')}>
+    <Section id="projects" title={t('title')} index={index}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {featuredProjects.map((project) => (
           <ProjectCard key={project.id} project={project} />

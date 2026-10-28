@@ -29,14 +29,22 @@ describe('ProjectsSection', () => {
     ]);
   });
 
-  it('shows the embedding notice for the OBS project', () => {
+  it('links each project to its case study', () => {
     render(<ProjectsSection />);
-    expect(screen.getByText(/Twitch login doesn't work in desktop mode/)).toBeInTheDocument();
+    const caseStudyHrefs = screen
+      .getAllByRole('link', { name: /Read case study/ })
+      .map((link) => link.getAttribute('href'));
+    expect(caseStudyHrefs).toEqual(['/projects/projeto-r', '/projects/obs-interactive']);
+  });
+
+  it('shows the cold-start notice for the OBS demo', () => {
+    render(<ProjectsSection />);
+    expect(screen.getByText(/The server may take about 50 s to wake up/)).toBeInTheDocument();
   });
 
   it('falls back to a placeholder when the screenshot fails to load', () => {
     render(<ProjectsSection />);
-    fireEvent.error(screen.getByRole('img', { name: 'Projeto R' }));
+    fireEvent.error(screen.getByAltText('Projeto R'));
     const placeholder = screen.getByTestId('project-screenshot-placeholder');
     expect(within(placeholder).getByText('Projeto R')).toBeInTheDocument();
   });

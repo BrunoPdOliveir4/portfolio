@@ -13,16 +13,6 @@ describe('BrowserApp', () => {
     expect(screen.getByRole('textbox')).toHaveValue('https://projeto-r.vercel.app');
   });
 
-  it('shows the notice when one is given', () => {
-    render(<BrowserApp notice="Login only works in a new tab." />);
-    expect(screen.getByRole('note')).toHaveTextContent('Login only works in a new tab.');
-  });
-
-  it('omits the notice by default', () => {
-    render(<BrowserApp />);
-    expect(screen.queryByRole('note')).not.toBeInTheDocument();
-  });
-
   it('lists the project demos as bookmarks', () => {
     render(<BrowserApp />);
     expect(screen.getByRole('button', { name: 'Projeto R' })).toBeInTheDocument();

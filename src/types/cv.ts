@@ -47,6 +47,13 @@ export interface Education {
   period: string;
 }
 
+export interface SpokenLanguage {
+  name: string;
+  nameEn: string;
+  level: string;
+  levelEn: string;
+}
+
 export interface SkillCategory {
   category: string;
   categoryEn: string;
@@ -63,5 +70,54 @@ export interface CV {
   experience: Experience[];
   projects: Project[];
   education: Education[];
+  certifications: string[];
+  languages: SpokenLanguage[];
   skills: SkillCategory[];
+}
+
+/** One step of a case study's architecture flow, read left to right. */
+export interface ArchitectureStep {
+  label: string;
+  labelEn: string;
+  detail: string;
+  detailEn: string;
+  /** What travels from this step to the next one; omitted on the last step. */
+  via?: string;
+  viaEn?: string;
+}
+
+export interface CaseStudyDecision {
+  topic: string;
+  topicEn: string;
+  choice: string;
+  choiceEn: string;
+  why: string;
+  whyEn: string;
+}
+
+export interface CaseStudyMetric {
+  value: string;
+  /** English value when number formatting differs (e.g. "0,35" vs "0.35"). */
+  valueEn?: string;
+  label: string;
+  labelEn: string;
+}
+
+export interface CaseStudyImage {
+  src: string;
+  alt: string;
+  altEn: string;
+}
+
+/** Long-form write-up for a featured project, rendered at /projects/[id]. */
+export interface CaseStudy {
+  projectId: string;
+  problem: string;
+  problemEn: string;
+  architecture: ArchitectureStep[];
+  decisions: CaseStudyDecision[];
+  results: CaseStudyMetric[];
+  learnings: string[];
+  learningsEn: string[];
+  gallery: CaseStudyImage[];
 }
