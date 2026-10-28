@@ -63,7 +63,7 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 
 function Tag({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-block px-2 py-0.5 text-[11px] font-medium bg-emerald-500/10 text-emerald-400 rounded">
+    <span className="inline-block px-2 py-0.5 text-[11px] font-medium bg-brand-500/10 text-brand-400 rounded">
       {children}
     </span>
   );
@@ -73,11 +73,11 @@ function WhoamiContent({ locale }: PanelProps) {
   return (
     <div className="space-y-6">
       <div className="text-center pb-4 border-b border-zinc-700">
-        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-emerald-500 to-blue-500 mx-auto mb-3 flex items-center justify-center text-2xl font-bold text-white">
+        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-brand-500 to-blue-500 mx-auto mb-3 flex items-center justify-center text-2xl font-bold text-white">
           BP
         </div>
         <h1 className="text-xl font-bold text-zinc-100">{cv.name}</h1>
-        <p className="text-sm text-emerald-400 font-medium mt-1">{pick(locale, cv.title, cv.titleEn)}</p>
+        <p className="text-sm text-brand-400 font-medium mt-1">{pick(locale, cv.title, cv.titleEn)}</p>
       </div>
       <div>
         <SectionTitle>{t(locale).profile}</SectionTitle>
@@ -96,7 +96,7 @@ function ExperienceContent({ locale }: PanelProps) {
           <div className="flex items-start justify-between gap-4">
             <div>
               <h3 className="font-semibold text-zinc-100">{pick(locale, exp.role, exp.roleEn)}</h3>
-              <p className="text-sm text-emerald-400">{exp.company}</p>
+              <p className="text-sm text-brand-400">{exp.company}</p>
             </div>
             <span className="text-xs text-zinc-500 shrink-0 mt-1">
               {formatPeriod(exp.periodStart, exp.periodEnd, locale)}
@@ -105,7 +105,7 @@ function ExperienceContent({ locale }: PanelProps) {
           <ul className="space-y-1.5">
             {pick(locale, exp.bullets, exp.bulletsEn).map((b, i) => (
               <li key={i} className="text-sm text-zinc-300 leading-relaxed flex gap-2">
-                <span className="text-emerald-500 shrink-0 mt-0.5">-</span>
+                <span className="text-brand-500 shrink-0 mt-0.5">-</span>
                 <span>{b}</span>
               </li>
             ))}
@@ -128,7 +128,7 @@ function EducationContent({ locale }: PanelProps) {
       {cv.education.map((edu, i) => (
         <div key={i} className="pb-4 border-b border-zinc-800 last:border-0">
           <h3 className="font-semibold text-zinc-100">{edu.institution}</h3>
-          <p className="text-sm text-emerald-400 mt-0.5">{pick(locale, edu.degree, edu.degreeEn)}</p>
+          <p className="text-sm text-brand-400 mt-0.5">{pick(locale, edu.degree, edu.degreeEn)}</p>
           <p className="text-xs text-zinc-500 mt-1">{edu.period}</p>
         </div>
       ))}
@@ -143,7 +143,7 @@ function SkillsContent({ locale }: PanelProps) {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {cv.skills.map((cat) => (
           <div key={cat.categoryEn} className="bg-zinc-800/50 rounded-lg p-3">
-            <h3 className="text-sm font-semibold text-emerald-400 mb-2">
+            <h3 className="text-sm font-semibold text-brand-400 mb-2">
               {pick(locale, cat.category, cat.categoryEn)}
             </h3>
             <div className="flex flex-wrap gap-1.5">
@@ -185,7 +185,7 @@ function ProjectsContent({ locale }: PanelProps) {
               href={proj.demo.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block mt-2 text-xs text-emerald-400 hover:underline"
+              className="inline-block mt-2 text-xs text-brand-400 hover:underline"
             >
               {t(locale).liveDemo} ↗
             </a>
@@ -213,7 +213,7 @@ function ContactContent({ locale }: PanelProps) {
           <div key={item.label} className="flex items-center gap-3 py-2 px-3 rounded-lg bg-zinc-800/50">
             <span className="text-xs font-semibold text-zinc-500 uppercase w-20 shrink-0">{item.label}</span>
             {item.href ? (
-              <a href={item.href} target="_blank" rel="noopener noreferrer" className="text-sm text-emerald-400 hover:underline truncate">
+              <a href={item.href} target="_blank" rel="noopener noreferrer" className="text-sm text-brand-400 hover:underline truncate">
                 {item.value}
               </a>
             ) : (
@@ -257,7 +257,7 @@ function CurriculumContent({ locale }: PanelProps) {
           link.click();
           document.body.removeChild(link);
         }}
-        className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 text-emerald-400 rounded-lg text-sm font-medium hover:bg-emerald-500/20 transition-colors"
+        className="inline-flex items-center gap-2 px-4 py-2 bg-brand-500/10 text-brand-400 rounded-lg text-sm font-medium hover:bg-brand-500/20 transition-colors"
       >
         {t(locale).download}
       </button>

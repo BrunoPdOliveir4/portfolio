@@ -12,7 +12,7 @@ export function ContactSection({ index }: { index?: number }) {
       <div className="flex flex-wrap items-center gap-3">
         <a
           href={`mailto:${cv.contact.email}`}
-          className="rounded-lg bg-emerald-500 px-5 py-2.5 font-mono text-sm font-medium text-zinc-950 transition-colors hover:bg-emerald-400"
+          className="rounded-lg bg-brand-500 px-5 py-2.5 font-mono text-sm font-medium text-zinc-950 transition-colors hover:bg-brand-400"
         >
           {t('email')} — {cv.contact.email}
         </a>
@@ -20,14 +20,14 @@ export function ContactSection({ index }: { index?: number }) {
           href={`https://www.linkedin.com/in/${cv.contact.linkedin}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-lg border border-border px-5 py-2.5 font-mono text-sm text-muted-foreground transition-colors hover:border-emerald-500/50 hover:text-foreground"
+          className="rounded-lg border border-border px-5 py-2.5 font-mono text-sm text-muted-foreground transition-colors hover:border-brand-500/50 hover:text-foreground"
         >
           {t('linkedin')} ↗
         </a>
         <a
           href={`${basePath}/curriculum.pdf`}
           download="Bruno_Pedroso_Curriculum.pdf"
-          className="rounded-lg border border-border px-5 py-2.5 font-mono text-sm text-muted-foreground transition-colors hover:border-emerald-500/50 hover:text-foreground"
+          className="rounded-lg border border-border px-5 py-2.5 font-mono text-sm text-muted-foreground transition-colors hover:border-brand-500/50 hover:text-foreground"
         >
           {t('downloadCv')} ↓
         </a>

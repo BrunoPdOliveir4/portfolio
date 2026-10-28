@@ -23,12 +23,12 @@ export function Section({ id, title, subtitle, index, children, className }: Pro
       {title && (
         <div className="mb-12">
           {index !== undefined && (
-            <p className="mb-2 font-mono text-xs tracking-widest text-steel-500 dark:text-steel-400">
+            <p className="mb-2 font-mono text-xs tracking-widest text-zinc-500">
               {`// ${String(index).padStart(2, '0')}`}
             </p>
           )}
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground font-mono">
-            <span className="text-emerald-500 dark:text-emerald-400">{'>'}</span>{' '}
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground font-display uppercase tracking-[0.08em]">
+            <span className="text-brand-500 dark:text-brand-400">{'>'}</span>{' '}
             {title}
           </h2>
           {subtitle && (
@@ -36,7 +36,7 @@ export function Section({ id, title, subtitle, index, children, className }: Pro
               {subtitle}
             </p>
           )}
-          <div className="mt-4 h-px w-24 bg-gradient-to-r from-emerald-500/60 to-transparent" />
+          <div className="mt-4 h-px w-24 bg-gradient-to-r from-brand-500/60 to-transparent" />
         </div>
       )}
       {children}

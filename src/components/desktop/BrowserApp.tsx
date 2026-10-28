@@ -112,11 +112,11 @@ export function BrowserApp({ initialUrl = HOME_URL }: Props = {}) {
           </div>
 
           {/* URL bar */}
-          <div className="flex-1 flex items-center bg-zinc-900 rounded-lg px-3 py-1.5 border border-zinc-700 focus-within:border-emerald-500/50 transition-colors">
+          <div className="flex-1 flex items-center bg-zinc-900 rounded-lg px-3 py-1.5 border border-zinc-700 focus-within:border-brand-500/50 transition-colors">
             {isLoading ? (
-              <div className="w-3 h-3 mr-2 shrink-0 border-2 border-zinc-600 border-t-emerald-400 rounded-full animate-spin" />
+              <div className="w-3 h-3 mr-2 shrink-0 border-2 border-zinc-600 border-t-brand-400 rounded-full animate-spin" />
             ) : (
-              <svg className="w-3 h-3 text-emerald-500 mr-2 shrink-0" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <svg className="w-3 h-3 text-brand-500 mr-2 shrink-0" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <rect x="3" y="7" width="10" height="7" rx="1" />
                 <path d="M5 7V5a3 3 0 016 0v2" />
               </svg>

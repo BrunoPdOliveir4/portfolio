@@ -10,7 +10,8 @@
     "projects": "Projects",
     "about": "About",
     "cv": "CV",
-    "openTerminal": "Open terminal"
+    "openTerminal": "Open terminal",
+    "pillars": "Pillars"
   },
   "terminal": {
     "boot1": "Initializing portfolio v2.0...",
@@ -50,7 +51,14 @@
     "metricCompanies": "companies served by the agent platform",
     "metricRequests": "requests per day",
     "metricLatency": "agent response time (down from 20–30 s)",
-    "metricsTitle": "In production at NextIA"
+    "metricsTitle": "In production at NextIA",
+    "tagline": "BACKEND · ARCHITECTURE · SECURITY · AI"
+  },
+  "pillars": {
+    "title": "Pillars",
+    "subtitle": "Where I focus my work, and where to find the evidence.",
+    "skills": "Skills",
+    "proof": "Evidence"
   },
   "contact": {
     "title": "Let's talk",

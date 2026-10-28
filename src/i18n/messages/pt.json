@@ -10,7 +10,8 @@
     "projects": "Projetos",
     "about": "Sobre",
     "cv": "CV",
-    "openTerminal": "Abrir terminal"
+    "openTerminal": "Abrir terminal",
+    "pillars": "Pilares"
   },
   "terminal": {
     "boot1": "Inicializando portfólio v2.0...",
@@ -50,7 +51,14 @@
     "metricCompanies": "empresas atendidas pela plataforma de agentes",
     "metricRequests": "requisições por dia",
     "metricLatency": "de resposta dos agentes (antes 20–30 s)",
-    "metricsTitle": "Em produção na NextIA"
+    "metricsTitle": "Em produção na NextIA",
+    "tagline": "BACKEND · ARQUITETURA · SECURITY · AI"
+  },
+  "pillars": {
+    "title": "Pilares",
+    "subtitle": "Onde concentro o trabalho, e onde estão as provas.",
+    "skills": "Competências",
+    "proof": "Provas"
   },
   "contact": {
     "title": "Vamos conversar",

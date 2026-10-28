@@ -4,7 +4,9 @@ import { Hero } from '../Hero';
 describe('Hero', () => {
   it('leads with name and title, keeping availability for the About page', () => {
     render(<Hero />);
-    expect(screen.getByRole('heading', { level: 1, name: 'Bruno Pedroso de Oliveira' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1, name: 'Bruno Pedroso' })).toBeInTheDocument();
+    const tagline = screen.getByText('SECURITY').closest('p');
+    expect(tagline).toHaveTextContent('BACKEND·ARCHITECTURE·SECURITY·AI');
     expect(screen.getByText('Senior Software Engineer')).toBeInTheDocument();
     expect(screen.queryByText(/Open to remote/)).not.toBeInTheDocument();
   });

@@ -9,6 +9,7 @@ describe('Navbar', () => {
 
   it('links home sections by hash so they work from any page', () => {
     render(<Navbar />);
+    expect(screen.getByRole('link', { name: 'Pillars' })).toHaveAttribute('href', '/#pillars');
     expect(screen.getByRole('link', { name: 'Experience' })).toHaveAttribute('href', '/#experience');
     expect(screen.getByRole('link', { name: 'Projects' })).toHaveAttribute('href', '/#projects');
     expect(screen.getByRole('link', { name: 'Skills' })).toHaveAttribute('href', '/#skills');

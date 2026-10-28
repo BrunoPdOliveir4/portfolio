@@ -17,7 +17,7 @@ export function ArchitectureFlow({ steps }: { steps: ArchitectureStep[] }) {
         return (
           <li key={step.labelEn} className="flex flex-1 flex-col lg:flex-row">
             <div className="flex-1 rounded-lg border border-border bg-card dark:bg-zinc-900/60 p-4">
-              <p aria-hidden="true" className="font-mono text-[10px] tracking-widest text-steel-500 dark:text-steel-400">
+              <p aria-hidden="true" className="font-mono text-[10px] tracking-widest text-zinc-500">
                 {String(i + 1).padStart(2, '0')}
               </p>
               <h3 className="mt-1 font-mono text-sm font-bold text-foreground">{pick(locale, step.label, step.labelEn)}</h3>
@@ -27,7 +27,7 @@ export function ArchitectureFlow({ steps }: { steps: ArchitectureStep[] }) {
             </div>
             {via && (
               <div className="flex shrink-0 flex-col items-center justify-center px-2 py-2 lg:w-24 lg:py-0">
-                <span aria-hidden="true" className="font-mono text-emerald-500">
+                <span aria-hidden="true" className="font-mono text-brand-500">
                   <span className="lg:hidden">↓</span>
                   <span className="hidden lg:inline">→</span>
                 </span>

@@ -21,7 +21,7 @@ export function LocaleSwitcher() {
             className={cn(
               'px-1.5 transition-colors',
               l === locale
-                ? 'font-bold text-emerald-500 dark:text-emerald-400'
+                ? 'font-bold text-brand-500 dark:text-brand-400'
                 : 'text-muted-foreground hover:text-foreground',
             )}
           >

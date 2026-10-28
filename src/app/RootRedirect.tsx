@@ -20,7 +20,7 @@ export function RootRedirect() {
       <p>
         Redirecting…{' '}
         <noscript>
-          <a href={fallback} className="text-emerald-500 underline">
+          <a href={fallback} className="text-brand-500 underline">
             Continuar para o portfólio
           </a>
         </noscript>

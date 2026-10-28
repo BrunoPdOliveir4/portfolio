@@ -1,7 +1,6 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { ThemeToggle } from './ThemeToggle';
 import { LocaleSwitcher } from './LocaleSwitcher';
 import { Brand } from './Brand';
 import { Link } from '@/i18n/routing';
@@ -12,7 +11,7 @@ const CV_HREF = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/curriculum.pdf`;
 
 // Home sections are linked by hash so they work from any page (case studies,
 // /about); next-intl's Link prefixes the active locale and the basePath.
-const sections = ['experience', 'projects', 'skills'] as const;
+const sections = ['pillars', 'experience', 'projects', 'skills'] as const;
 const pages = [
   { key: 'about', href: '/about' },
   { key: 'terminal', href: '/terminal' },
@@ -41,7 +40,7 @@ export function Navbar() {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         scrolled || mobileOpen
-          ? 'bg-background/80 backdrop-blur-md border-b border-border'
+          ? 'bg-background/95 backdrop-blur-md border-b border-border'
           : 'bg-transparent'
       )}
     >
@@ -54,7 +53,7 @@ export function Navbar() {
         <div className="hidden md:flex items-center gap-6">
           {links.map((link) => (
             <Link key={link.key} href={link.href} className={LINK_CLASS}>
-              {link.key === 'terminal' && <span className="text-emerald-500">{'>_ '}</span>}
+              {link.key === 'terminal' && <span className="text-brand-500">{'>_ '}</span>}
               {t(link.key)}
             </Link>
           ))}
@@ -62,19 +61,17 @@ export function Navbar() {
             <a
               href={CV_HREF}
               download="Bruno_Pedroso_Curriculum.pdf"
-              className="rounded-md border border-emerald-500/40 px-2.5 py-1 text-xs font-mono font-medium text-emerald-600 dark:text-emerald-400 transition-colors hover:bg-emerald-500/10"
+              className="rounded-md border border-brand-500/40 px-2.5 py-1 text-xs font-mono font-medium text-brand-600 dark:text-brand-400 transition-colors hover:bg-brand-500/10"
             >
               {t('cv')} ↓
             </a>
             <LocaleSwitcher />
-            <ThemeToggle />
           </div>
         </div>
 
         {/* Mobile toggle */}
         <div className="flex md:hidden items-center gap-3">
           <LocaleSwitcher />
-          <ThemeToggle />
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="w-9 h-9 flex items-center justify-center"
@@ -109,7 +106,7 @@ export function Navbar() {
             <a
               href={CV_HREF}
               download="Bruno_Pedroso_Curriculum.pdf"
-              className="text-sm font-mono text-emerald-600 dark:text-emerald-400"
+              className="text-sm font-mono text-brand-600 dark:text-brand-400"
             >
               {'>'} {t('cv')} ↓
             </a>
