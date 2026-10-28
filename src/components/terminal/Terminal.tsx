@@ -64,7 +64,7 @@ export function Terminal({ embedded, onToggleDesktop }: Props = {}) {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: i * 0.3 }}
-                  className="font-mono text-sm text-emerald-400"
+                  className="font-mono text-sm text-brand-400"
                 >
                   {line}
                 </motion.div>
@@ -74,7 +74,7 @@ export function Terminal({ embedded, onToggleDesktop }: Props = {}) {
         </AnimatePresence>
         {!isBooting && (
           <>
-            <div className="mb-2 font-mono text-sm text-emerald-400">
+            <div className="mb-2 font-mono text-sm text-brand-400">
               {bootLines.map((line, i) => (
                 <div key={i}>{line}</div>
               ))}
@@ -99,7 +99,7 @@ export function Terminal({ embedded, onToggleDesktop }: Props = {}) {
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         onClick={() => setMode('normal')}
-        className="px-6 py-3 rounded-lg border border-zinc-700 bg-zinc-900 font-mono text-sm text-emerald-400 hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/5 transition-all"
+        className="px-6 py-3 rounded-lg border border-zinc-700 bg-zinc-900 font-mono text-sm text-brand-400 hover:border-brand-500/50 hover:shadow-lg hover:shadow-brand-500/5 transition-all"
       >
         {'>'} {t('reopen')}
       </motion.button>
@@ -111,7 +111,7 @@ export function Terminal({ embedded, onToggleDesktop }: Props = {}) {
       layout
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
       className={cn(
-        'relative overflow-hidden border border-zinc-700 dark:border-zinc-700 bg-zinc-950 shadow-2xl dark:shadow-emerald-500/5',
+        'relative overflow-hidden border border-zinc-700 dark:border-zinc-700 bg-zinc-950 shadow-2xl dark:shadow-brand-500/5',
         mode === 'fullscreen'
           ? 'fixed inset-0 z-[100] rounded-none'
           : 'w-full max-w-3xl mx-auto rounded-lg',
@@ -207,7 +207,7 @@ export function Terminal({ embedded, onToggleDesktop }: Props = {}) {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: i * 0.3 }}
-                        className="font-mono text-sm text-emerald-400"
+                        className="font-mono text-sm text-brand-400"
                       >
                         {line}
                       </motion.div>
@@ -219,7 +219,7 @@ export function Terminal({ embedded, onToggleDesktop }: Props = {}) {
               {/* Command output */}
               {!isBooting && (
                 <>
-                  <div className="mb-2 font-mono text-sm text-emerald-400">
+                  <div className="mb-2 font-mono text-sm text-brand-400">
                     {bootLines.map((line, i) => (
                       <div key={i}>{line}</div>
                     ))}

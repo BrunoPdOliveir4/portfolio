@@ -56,7 +56,7 @@ export function TerminalInput({ onSubmit, onNavigateHistory, inputRef }: Props) 
   return (
     <div>
       <div className="flex items-center gap-2 font-mono text-sm">
-        <span className="text-emerald-400 shrink-0">bruno@portfolio</span>
+        <span className="text-brand-400 shrink-0">bruno@portfolio</span>
         <span className="text-zinc-500">:</span>
         <span className="text-blue-400">~</span>
         <span className="text-zinc-500">$</span>
@@ -67,7 +67,7 @@ export function TerminalInput({ onSubmit, onNavigateHistory, inputRef }: Props) 
             value={value}
             onChange={(e) => setValue(e.target.value)}
             onKeyDown={handleKeyDown}
-            className="w-full bg-transparent text-zinc-200 outline-none caret-emerald-400"
+            className="w-full bg-transparent text-zinc-200 outline-none caret-brand-400"
             autoFocus
             spellCheck={false}
             autoComplete="off"

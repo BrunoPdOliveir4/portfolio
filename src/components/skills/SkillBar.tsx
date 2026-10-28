@@ -24,7 +24,7 @@ export function SkillBar({ name, level }: Props) {
           initial={{ width: 0 }}
           animate={isInView ? { width: `${level}%` } : { width: 0 }}
           transition={{ duration: 1, ease: 'easeOut', delay: 0.2 }}
-          className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-emerald-400"
+          className="h-full rounded-full bg-gradient-to-r from-brand-500 to-brand-400"
         />
       </div>
     </div>

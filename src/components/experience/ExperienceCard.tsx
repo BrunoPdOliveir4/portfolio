@@ -18,14 +18,14 @@ export function ExperienceCard({ experience }: { experience: Experience }) {
   return (
     <GlowCard className="relative">
       {/* Timeline dot */}
-      <div className="absolute -left-[41px] top-8 w-4 h-4 rounded-full bg-emerald-500 border-4 border-background dark:border-zinc-950 hidden md:block" />
+      <div className="absolute -left-[41px] top-8 w-4 h-4 rounded-full bg-brand-500 border-4 border-background dark:border-zinc-950 hidden md:block" />
 
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-1 mb-3">
         <div>
           <h3 className="text-lg font-bold text-foreground">
             {pick(locale, experience.role, experience.roleEn)}
           </h3>
-          <p className="text-emerald-500 dark:text-emerald-400 font-mono text-sm">
+          <p className="text-brand-500 dark:text-brand-400 font-mono text-sm">
             {experience.company}
           </p>
         </div>
@@ -44,7 +44,7 @@ export function ExperienceCard({ experience }: { experience: Experience }) {
               exit={{ opacity: 0, height: 0 }}
               className="text-sm text-muted-foreground flex gap-2"
             >
-              <span className="text-emerald-500 shrink-0 mt-1">▸</span>
+              <span className="text-brand-500 shrink-0 mt-1">▸</span>
               <span>{bullet}</span>
             </motion.li>
           ))}
@@ -54,7 +54,7 @@ export function ExperienceCard({ experience }: { experience: Experience }) {
       {bullets.length > 2 && (
         <button
           onClick={() => setExpanded(!expanded)}
-          className="text-xs font-mono text-emerald-500 hover:text-emerald-400 transition-colors"
+          className="text-xs font-mono text-brand-500 hover:text-brand-400 transition-colors"
         >
           {expanded ? `— ${t('showLess')}` : `+ ${t('showMore')} (${bullets.length - 2})`}
         </button>

@@ -8,8 +8,8 @@ import { pick } from '@/lib/cv-i18n';
 function Block({ id, title, children }: { id: string; title: string; children: ReactNode }) {
   return (
     <section aria-labelledby={id} className="mt-16">
-      <h2 id={id} className="mb-6 font-mono text-xl font-bold text-foreground">
-        <span className="text-emerald-500 dark:text-emerald-400">{'>'}</span> {title}
+      <h2 id={id} className="mb-6 font-display text-xl font-bold uppercase tracking-[0.08em] text-foreground">
+        <span className="text-brand-500 dark:text-brand-400">{'>'}</span> {title}
       </h2>
       {children}
     </section>
@@ -22,9 +22,9 @@ export function AboutView() {
 
   return (
     <article className="max-w-4xl mx-auto px-4 md:px-8 py-10 md:py-16">
-      <h1 className="text-3xl md:text-5xl font-bold font-mono tracking-tight">
-        <span className="text-emerald-500">{'>'}</span>{' '}
-        <span className="bg-gradient-to-r from-emerald-400 to-steel-400 bg-clip-text text-transparent">
+      <h1 className="text-3xl md:text-5xl font-bold font-display uppercase tracking-[0.06em]">
+        <span className="text-brand-500">{'>'}</span>{' '}
+        <span className="bg-gradient-to-r from-zinc-50 via-brand-300 to-brand-400 bg-clip-text text-transparent">
           {t('title')}
         </span>
       </h1>
@@ -42,7 +42,7 @@ export function AboutView() {
           {about.targetRoles.map((role) => (
             <li
               key={role}
-              className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 font-mono text-sm text-emerald-700 dark:text-emerald-300"
+              className="rounded-full border border-brand-500/30 bg-brand-500/10 px-3 py-1 font-mono text-sm text-brand-700 dark:text-brand-300"
             >
               {role}
             </li>
@@ -71,7 +71,7 @@ export function AboutView() {
       <Block id="education" title={t('education')}>
         <ul className="space-y-4">
           {cv.education.map((entry) => (
-            <li key={entry.degree} className="border-l-2 border-emerald-500/40 pl-4">
+            <li key={entry.degree} className="border-l-2 border-brand-500/40 pl-4">
               <p className="font-bold text-foreground">{pick(locale, entry.degree, entry.degreeEn)}</p>
               <p className="font-mono text-sm text-muted-foreground">
                 {entry.institution} · {entry.period}
@@ -81,7 +81,7 @@ export function AboutView() {
         </ul>
         <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
           <div>
-            <h3 className="font-mono text-xs text-steel-500 dark:text-steel-400">{`// ${t('certifications')}`}</h3>
+            <h3 className="font-mono text-xs text-zinc-500">{`// ${t('certifications')}`}</h3>
             <ul className="mt-2 space-y-1 text-sm text-foreground">
               {cv.certifications.map((certification) => (
                 <li key={certification}>{certification}</li>
@@ -89,7 +89,7 @@ export function AboutView() {
             </ul>
           </div>
           <div>
-            <h3 className="font-mono text-xs text-steel-500 dark:text-steel-400">{`// ${t('languages')}`}</h3>
+            <h3 className="font-mono text-xs text-zinc-500">{`// ${t('languages')}`}</h3>
             <ul className="mt-2 space-y-1 text-sm text-foreground">
               {cv.languages.map((language) => (
                 <li key={language.nameEn}>
@@ -107,7 +107,7 @@ export function AboutView() {
         <dl className="grid grid-cols-1 gap-x-8 gap-y-5 sm:grid-cols-2">
           {about.uses.map((group) => (
             <div key={group.categoryEn}>
-              <dt className="font-mono text-xs text-steel-500 dark:text-steel-400">
+              <dt className="font-mono text-xs text-zinc-500">
                 {'// '}{pick(locale, group.category, group.categoryEn)}
               </dt>
               <dd className="mt-1 text-sm text-foreground">{group.tools.join(' · ')}</dd>

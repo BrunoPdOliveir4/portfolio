@@ -34,7 +34,7 @@ export function GitHubSection({ repos, publicRepoCount, index }: Props) {
         <div className="flex flex-wrap items-center gap-x-10 gap-y-4 font-mono">
           {publicRepoCount !== null && (
             <p>
-              <span className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">{publicRepoCount}</span>{' '}
+              <span className="text-2xl font-bold text-brand-600 dark:text-brand-400">{publicRepoCount}</span>{' '}
               <span className="text-sm text-muted-foreground">{t('publicRepos')}</span>
             </p>
           )}
@@ -58,7 +58,7 @@ export function GitHubSection({ repos, publicRepoCount, index }: Props) {
           href={profileUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="shrink-0 font-mono text-sm font-bold text-emerald-600 dark:text-emerald-400 hover:underline"
+          className="shrink-0 font-mono text-sm font-bold text-brand-600 dark:text-brand-400 hover:underline"
         >
           {t('viewProfile')} ↗
         </a>

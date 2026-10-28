@@ -10,7 +10,7 @@ import type { Project } from '@/types/cv';
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 
 const LINK_CLASS =
-  'inline-flex items-center gap-1.5 text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400 hover:underline';
+  'inline-flex items-center gap-1.5 text-xs font-mono font-bold text-brand-600 dark:text-brand-400 hover:underline';
 
 function ProjectScreenshot({ name, screenshot }: { name: string; screenshot?: string }) {
   const [hasFailed, setHasFailed] = useState(false);
@@ -19,7 +19,7 @@ function ProjectScreenshot({ name, screenshot }: { name: string; screenshot?: st
     return (
       <div
         data-testid="project-screenshot-placeholder"
-        className="aspect-video flex items-center justify-center bg-gradient-to-br from-emerald-500/20 via-zinc-800 to-zinc-900"
+        className="aspect-video flex items-center justify-center bg-gradient-to-br from-brand-500/20 via-zinc-800 to-zinc-900"
       >
         <span className="font-mono text-lg font-bold text-zinc-200">{name}</span>
       </div>
@@ -53,7 +53,7 @@ export function ProjectCard({ project }: { project: Project }) {
 
       <div className="flex flex-1 flex-col p-6">
         <h3 className="text-lg font-bold font-mono text-foreground">
-          <Link href={`/projects/${project.id}`} className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+          <Link href={`/projects/${project.id}`} className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">
             {name}
           </Link>
         </h3>
@@ -65,7 +65,7 @@ export function ProjectCard({ project }: { project: Project }) {
           <ul className="mt-4 space-y-1.5 text-sm text-muted-foreground">
             {highlights.map((highlight) => (
               <li key={highlight} className="flex gap-2">
-                <span className="text-emerald-500 dark:text-emerald-400">▹</span>
+                <span className="text-brand-500 dark:text-brand-400">▹</span>
                 <span>{highlight}</span>
               </li>
             ))}

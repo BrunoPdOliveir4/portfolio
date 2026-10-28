@@ -17,8 +17,8 @@ type Props = {
 function Block({ title, children }: { title: string; children: ReactNode }) {
   return (
     <section className="mt-16">
-      <h2 className="mb-6 font-mono text-xl font-bold text-foreground">
-        <span className="text-emerald-500 dark:text-emerald-400">{'>'}</span> {title}
+      <h2 className="mb-6 font-display text-xl font-bold uppercase tracking-[0.08em] text-foreground">
+        <span className="text-brand-500 dark:text-brand-400">{'>'}</span> {title}
       </h2>
       {children}
     </section>
@@ -26,7 +26,7 @@ function Block({ title, children }: { title: string; children: ReactNode }) {
 }
 
 const LINK_CLASS =
-  'rounded-lg border border-border px-4 py-2 font-mono text-sm text-muted-foreground transition-colors hover:border-emerald-500/50 hover:text-foreground';
+  'rounded-lg border border-border px-4 py-2 font-mono text-sm text-muted-foreground transition-colors hover:border-brand-500/50 hover:text-foreground';
 
 export function CaseStudyView({ project, study, nextProject }: Props) {
   const t = useTranslations('caseStudy');
@@ -38,14 +38,14 @@ export function CaseStudyView({ project, study, nextProject }: Props) {
     <article className="max-w-5xl mx-auto px-4 md:px-8 py-10 md:py-16">
       <Link
         href={{ pathname: '/', hash: 'projects' }}
-        className="font-mono text-xs text-muted-foreground transition-colors hover:text-emerald-500"
+        className="font-mono text-xs text-muted-foreground transition-colors hover:text-brand-500"
       >
         ← {t('back')}
       </Link>
 
       <header className="mt-6">
-        <h1 className="text-3xl md:text-5xl font-bold font-mono tracking-tight">
-          <span className="bg-gradient-to-r from-emerald-400 to-steel-400 bg-clip-text text-transparent">{name}</span>
+        <h1 className="text-3xl md:text-5xl font-bold font-display uppercase tracking-[0.06em]">
+          <span className="bg-gradient-to-r from-zinc-50 via-brand-300 to-brand-400 bg-clip-text text-transparent">{name}</span>
         </h1>
         <p className="mt-4 max-w-3xl text-base md:text-lg leading-relaxed text-muted-foreground">
           {pick(locale, project.description, project.descriptionEn)}
@@ -57,7 +57,7 @@ export function CaseStudyView({ project, study, nextProject }: Props) {
               href={project.demo.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-lg bg-emerald-500 px-4 py-2 font-mono text-sm font-medium text-zinc-950 transition-colors hover:bg-emerald-400"
+              className="rounded-lg bg-brand-500 px-4 py-2 font-mono text-sm font-medium text-zinc-950 transition-colors hover:bg-brand-400"
             >
               {t('liveDemo')} ↗
             </a>
@@ -87,7 +87,7 @@ export function CaseStudyView({ project, study, nextProject }: Props) {
           <img
             src={`${basePath}${project.screenshot}`}
             alt={name}
-            className="mt-10 w-full rounded-lg border border-border object-cover shadow-2xl shadow-emerald-500/5"
+            className="mt-10 w-full rounded-lg border border-border object-cover shadow-2xl shadow-brand-500/5"
           />
         )}
       </header>
@@ -106,7 +106,7 @@ export function CaseStudyView({ project, study, nextProject }: Props) {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {study.decisions.map((decision) => (
             <GlowCard key={decision.topic} hover={false} className="p-5">
-              <p className="font-mono text-[10px] uppercase tracking-widest text-steel-500 dark:text-steel-400">
+              <p className="font-mono text-[10px] uppercase tracking-widest text-zinc-500">
                 {pick(locale, decision.topic, decision.topicEn)}
               </p>
               <h3 className="mt-1 font-mono text-sm font-bold text-foreground">
@@ -125,7 +125,7 @@ export function CaseStudyView({ project, study, nextProject }: Props) {
           {study.results.map((metric) => (
             <div key={metric.labelEn} className="flex flex-col rounded-lg border border-border bg-card dark:bg-zinc-900/50 p-4">
               <dt className="order-2 mt-1 text-xs text-muted-foreground">{pick(locale, metric.label, metric.labelEn)}</dt>
-              <dd className="order-1 font-mono text-xl font-bold text-emerald-600 dark:text-emerald-400">{pick(locale, metric.value, metric.valueEn ?? metric.value)}</dd>
+              <dd className="order-1 font-mono text-xl font-bold text-brand-600 dark:text-brand-400">{pick(locale, metric.value, metric.valueEn ?? metric.value)}</dd>
             </div>
           ))}
         </dl>
@@ -135,7 +135,7 @@ export function CaseStudyView({ project, study, nextProject }: Props) {
         <ul className="max-w-3xl space-y-3">
           {learnings.map((learning) => (
             <li key={learning} className="flex gap-3 text-sm leading-relaxed text-muted-foreground">
-              <span className="text-emerald-500 dark:text-emerald-400">▹</span>
+              <span className="text-brand-500 dark:text-brand-400">▹</span>
               <span>{learning}</span>
             </li>
           ))}
@@ -168,7 +168,7 @@ export function CaseStudyView({ project, study, nextProject }: Props) {
           <p className="font-mono text-xs text-muted-foreground">{t('nextProject')}</p>
           <Link
             href={`/projects/${nextProject.id}`}
-            className="mt-1 inline-block font-mono text-xl font-bold text-foreground transition-colors hover:text-emerald-500"
+            className="mt-1 inline-block font-mono text-xl font-bold text-foreground transition-colors hover:text-brand-500"
           >
             {pick(locale, nextProject.name, nextProject.nameEn)} →
           </Link>

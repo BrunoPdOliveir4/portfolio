@@ -16,7 +16,7 @@ export function SkillsSection({ index }: { index?: number }) {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {cv.skills.map((category) => (
           <GlowCard key={category.category} className="space-y-3 p-5">
-            <h3 className="text-sm font-mono font-bold text-emerald-500 dark:text-emerald-400">
+            <h3 className="text-sm font-mono font-bold text-brand-500 dark:text-brand-400">
               {'// '}{pick(locale, category.category, category.categoryEn)}
             </h3>
             <div className="flex flex-wrap gap-2">

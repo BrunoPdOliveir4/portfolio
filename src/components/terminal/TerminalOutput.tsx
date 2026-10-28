@@ -5,7 +5,7 @@ import type { TerminalLine, CommandOutput } from '@/types/terminal';
 
 function formatAnsi(text: string): string {
   return text
-    .replace(/\x1b\[32m/g, '<span class="text-emerald-400">')
+    .replace(/\x1b\[32m/g, '<span class="text-brand-400">')
     .replace(/\x1b\[0m/g, '</span>');
 }
 
@@ -37,7 +37,7 @@ export function TerminalOutput({ lines }: { lines: TerminalLine[] }) {
         >
           {line.command && (
             <div className="flex items-center gap-2 font-mono text-sm">
-              <span className="text-emerald-400">bruno@portfolio</span>
+              <span className="text-brand-400">bruno@portfolio</span>
               <span className="text-zinc-500">:</span>
               <span className="text-blue-400">~</span>
               <span className="text-zinc-500">$</span>

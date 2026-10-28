@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { notFound } from 'next/navigation';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
@@ -31,12 +31,24 @@ function isLocale(locale: string): locale is Locale {
 const SITE_ORIGIN = 'https://brunopdoliveir4.github.io';
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 
+export const viewport: Viewport = {
+  themeColor: '#050807',
+  colorScheme: 'dark',
+};
+
 export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'metadata' });
   const path = `${basePath}/${locale}`;
 
   return {
     metadataBase: new URL(SITE_ORIGIN),
+    // Explicit icons replace Next's file convention, so the SVG favicon
+    // (emitted from src/app/icon.svg) is listed here too.
+    icons: {
+      icon: { url: `${basePath}/icon.svg`, type: 'image/svg+xml' },
+      apple: `${basePath}/apple-touch-icon.png`,
+    },
+    manifest: `${basePath}/site.webmanifest`,
     title: t('title'),
     description: t('description'),
     alternates: {

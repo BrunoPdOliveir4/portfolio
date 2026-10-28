@@ -34,7 +34,7 @@ export function Dock({ apps, openAppIds, onOpen }: Props) {
               </span>
               <span className="text-3xl leading-none p-1.5 rounded-xl bg-zinc-700/30 hover:bg-zinc-700/50 transition-colors">
                 {app.id === 'terminal' ? (
-                  <span className="text-lg font-bold text-emerald-400 flex items-center justify-center w-7 h-7">{'>_'}</span>
+                  <span className="text-lg font-bold text-brand-400 flex items-center justify-center w-7 h-7">{'>_'}</span>
                 ) : (
                   app.icon
                 )}
