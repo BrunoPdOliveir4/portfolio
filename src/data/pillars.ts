@@ -27,6 +27,7 @@ export const pillars: Pillar[] = [
     proofs: [
       { text: 'Tech Lead de projetos corporativos para clientes globais (Accenture)', textEn: 'Tech Lead on enterprise projects for global clients (Accenture)', href: experience },
       { text: 'Decisões técnicas documentadas no case study do Projeto R', textEn: 'Technical decisions documented in the Projeto R case study', href: { pathname: '/projects/projeto-r' } },
+      { text: 'Trade-offs de segurança e infraestrutura no case study do Bulwark', textEn: 'Security and infrastructure trade-offs in the Bulwark case study', href: { pathname: '/projects/bulwark' } },
     ],
   },
   {
@@ -37,6 +38,7 @@ export const pillars: Pillar[] = [
     summaryEn: 'Authentication, authorization, and isolation treated as requirements, not patches.',
     skills: ['OAuth2', 'JWT', 'RBAC', 'Input Validation', 'Multi-tenant Isolation'],
     proofs: [
+      { text: 'Prova de posse por HMAC e selo à prova de adulteração (Bulwark)', textEn: 'HMAC proof of ownership and a tamper-proof seal (Bulwark)', href: { pathname: '/projects/bulwark' } },
       { text: 'OAuth2 com login social e integrações de terceiros (Wee Find Pro)', textEn: 'OAuth2 with social login and third-party integrations (Wee Find Pro)', href: experience },
       { text: 'Acesso por Twitch OAuth e whitelist (OBS Overlay)', textEn: 'Access through Twitch OAuth and a whitelist (OBS Overlay)', href: { pathname: '/projects/obs-interactive' } },
       { text: 'Servidor que recusa mensagens fora do contrato (Projeto R)', textEn: 'Server that rejects off-contract messages (Projeto R)', href: { pathname: '/projects/projeto-r' } },
