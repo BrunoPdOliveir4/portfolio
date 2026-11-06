@@ -1,9 +1,102 @@
 import type { CaseStudy } from '@/types/cv';
 
 // Drafted from each project's README and docs (Projeto R:
-// docs/multiplayer-architecture.md). Figures are the measured ones reported
-// there, not estimates.
+// docs/multiplayer-architecture.md; Bulwark: README and docs/api.md).
+// Figures are the measured ones reported there, not estimates.
 export const caseStudies: CaseStudy[] = [
+  {
+    projectId: 'bulwark',
+    problem: 'Auditar a segurança de um site costuma exigir instalar ferramentas e interpretar relatórios crus. O Bulwark faz isso pelo navegador, em segundos. O desafio foi oferecer testes ativos sem virar uma ferramenta de ataque contra sites de terceiros, e mostrar a nota de um jeito que o próprio site não consiga falsificar.',
+    problemEn: 'Auditing a site\'s security usually means installing tools and reading raw reports. Bulwark does it from the browser, in seconds. The challenge was offering active tests without becoming an attack tool against other people\'s sites, and showing the grade in a way the site itself cannot fake.',
+    architecture: [
+      {
+        label: 'Web · Vercel',
+        labelEn: 'Web · Vercel',
+        detail: 'Next.js 15 com CSP por nonce, React Query e interface em português e inglês.',
+        detailEn: 'Next.js 15 with a nonce-based CSP, React Query, and a Portuguese and English interface.',
+        via: 'requisições validadas com Zod',
+        viaEn: 'Zod-validated requests',
+      },
+      {
+        label: 'API · Render',
+        labelEn: 'API · Render',
+        detail: 'Go com net/http puro, rate limit e um evento de log por requisição.',
+        detailEn: 'Go with plain net/http, rate limiting, and one log event per request.',
+        via: 'resultados por SSE',
+        viaEn: 'results over SSE',
+      },
+      {
+        label: 'Scanner',
+        labelEn: 'Scanner',
+        detail: '7 categorias. O cliente HTTP bloqueia IPs internos no dialer; os probes ativos só rodam após a prova de posse.',
+        detailEn: '7 categories. The HTTP client blocks internal IPs in the dialer; active probes run only after proof of ownership.',
+        via: 'scan salvo por 90 dias',
+        viaEn: 'scan kept for 90 days',
+      },
+      {
+        label: 'MongoDB Atlas',
+        labelEn: 'MongoDB Atlas',
+        detail: 'Histórico, comparação de scans, monitores agendados e selos.',
+        detailEn: 'History, scan comparison, scheduled monitors, and seals.',
+      },
+    ],
+    decisions: [
+      {
+        topic: 'Prova de posse',
+        topicEn: 'Proof of ownership',
+        choice: 'Token HMAC do host, sem estado',
+        choiceEn: 'Stateless HMAC token of the host',
+        why: 'A API recalcula o token e confere o DNS ou o arquivo a cada scan ativo, sem guardar nada. Se o dono remove a prova, os testes ativos param na hora.',
+        whyEn: 'The API recomputes the token and checks DNS or the file on every active scan, storing nothing. If the owner removes the proof, active tests stop at once.',
+      },
+      {
+        topic: 'Selo',
+        topicEn: 'Seal',
+        choice: 'Iframe isolado em vez de imagem ou JSON',
+        choiceEn: 'An isolated iframe instead of an image or JSON',
+        why: 'O snippet só leva o ID. A nota é lida do último scan a cada exibição, a página não consegue alterá-la, e o iframe confere o domínio que o incorpora.',
+        whyEn: 'The snippet carries only an ID. The grade is read from the latest scan on every view, the page cannot change it, and the iframe checks which domain embeds it.',
+      },
+      {
+        topic: 'SSRF',
+        topicEn: 'SSRF',
+        choice: 'Bloqueio no dialer, não na URL',
+        choiceEn: 'Blocking in the dialer, not the URL',
+        why: 'Validar só a URL deixa passar DNS rebinding e redirects. O hook Control do dialer confere o IP real de cada conexão.',
+        whyEn: 'Validating only the URL lets DNS rebinding and redirects through. The dialer\'s Control hook checks the real IP of every connection.',
+      },
+      {
+        topic: 'Monitoramento',
+        topicEn: 'Monitoring',
+        choice: 'Sem contas de usuário',
+        choiceEn: 'No user accounts',
+        why: 'Um cron do GitHub Actions dispara os scans, um lease no Mongo evita execuções duplicadas e o token de gestão fica no fragmento da URL, guardado só como hash.',
+        whyEn: 'A GitHub Actions cron triggers the scans, a lease in Mongo prevents duplicate runs, and the management token lives in the URL fragment, stored only as a hash.',
+      },
+    ],
+    results: [
+      { value: '7', label: 'categorias de scan', labelEn: 'scan categories' },
+      { value: '0', label: 'tokens de verificação guardados', labelEn: 'verification tokens stored' },
+      { value: '30 dias', valueEn: '30 days', label: 'de validade do selo após o scan', labelEn: 'of seal validity after a scan' },
+      { value: '2 idiomas', valueEn: '2 languages', label: 'na interface, nos findings e na documentação', labelEn: 'across the interface, findings, and docs' },
+    ],
+    learnings: [
+      'Em produção, o firewall anti-bot da Vercel bloqueava o servidor do Bulwark de forma intermitente e a verificação parecia expirar. Desde então, toda falha de verificação diz o motivo.',
+      'Um evento de log por requisição tornou bugs de produção diagnosticáveis sem precisar reproduzi-los.',
+      'Os testes de ponta a ponta em Chrome headless pegaram o que os testes unitários não viam, como o header CORP que impedia o selo de carregar em outros sites.',
+    ],
+    learningsEn: [
+      'In production, Vercel\'s bot protection intermittently blocked Bulwark\'s server and verification seemed to expire. Since then, every failed verification says why.',
+      'One log event per request made production bugs diagnosable without reproducing them.',
+      'End-to-end tests in headless Chrome caught what unit tests could not, such as the CORP header that kept the seal from loading on other sites.',
+    ],
+    gallery: [
+      { src: '/projects/bulwark/findings.jpg', alt: 'Findings de headers com severidade e correção pronta para copiar', altEn: 'Header findings with severity and a ready-to-copy fix' },
+      { src: '/projects/bulwark/seal-levels.jpg', alt: 'Os quatro níveis do selo: Bronze, Prata, Ouro e Platina', altEn: 'The four seal levels: Bronze, Silver, Gold, and Platinum' },
+      { src: '/projects/bulwark/verify.jpg', alt: 'Página pública de verificação do selo', altEn: 'Public seal verification page' },
+      { src: '/projects/bulwark/projeto-r-seal.jpg', alt: 'Selo Prata no menu do Projeto R', altEn: 'Silver seal on the Projeto R menu' },
+    ],
+  },
   {
     projectId: 'projeto-r',
     problem: 'O Projeto R nasceu como um RPG de ação para um jogador. O desafio foi levá-lo para o online, com co-op de até 3 jogadores e PvP 1v1, sem reescrever o combate inteiro e sem deixar o cliente decidir o próprio dano.',

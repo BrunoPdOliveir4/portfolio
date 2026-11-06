@@ -7,7 +7,11 @@ describe('desktop apps', () => {
     expect(projectIds.some((id) => appIds.includes(id))).toBe(false);
   });
 
-  it('lists every featured project that has a live demo', () => {
+  it('keeps sites that refuse framing out of the desktop browser', () => {
+    expect(demoProjects.map((project) => project.id)).not.toContain('bulwark');
+  });
+
+  it('lists every featured project that has an embeddable live demo', () => {
     expect(demoProjects.map((project) => project.demo.url)).toEqual([
       'https://projeto-r.vercel.app',
       'https://obs-interactivescreen.onrender.com/',

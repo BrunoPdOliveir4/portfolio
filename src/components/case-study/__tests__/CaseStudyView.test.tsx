@@ -37,6 +37,12 @@ describe('CaseStudyView', () => {
     );
   });
 
+  it('links to the Bulwark live demo without a source link for its private repository', () => {
+    render(<CaseStudyView project={project('bulwark')} study={findCaseStudy('bulwark')!} />);
+    expect(screen.getByRole('link', { name: /View live demo/ })).toHaveAttribute('href', 'https://bulwark-plum.vercel.app');
+    expect(screen.queryByRole('link', { name: /Source code/ })).not.toBeInTheDocument();
+  });
+
   it('renders the architecture as an ordered list of steps', () => {
     render(<CaseStudyView project={project('projeto-r')} study={study} />);
     const flow = screen.getByRole('heading', { name: '> Architecture' }).nextElementSibling as HTMLElement;

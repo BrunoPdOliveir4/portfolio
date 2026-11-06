@@ -23,6 +23,8 @@ export interface ProjectDemo {
   url: string;
   notice?: string;
   noticeEn?: string;
+  /** False when the site refuses to be framed: it still gets a new-tab link, but stays out of the desktop browser. */
+  embeddable?: boolean;
 }
 
 export interface Project {

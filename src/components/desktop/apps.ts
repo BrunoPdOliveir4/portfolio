@@ -5,7 +5,7 @@ import type { DesktopApp } from '@/types/desktop';
 type DemoProject = Project & { demo: ProjectDemo };
 
 function isDemoProject(project: Project): project is DemoProject {
-  return Boolean(project.featured && project.demo);
+  return Boolean(project.featured && project.demo && project.demo.embeddable !== false);
 }
 
 export const demoProjects: DemoProject[] = cv.projects.filter(isDemoProject);

@@ -9,6 +9,7 @@ describe('ProjectsSection', () => {
 
   it('renders only featured projects', () => {
     render(<ProjectsSection />);
+    expect(screen.getByRole('heading', { name: 'Bulwark' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Projeto R' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Interactive OBS Overlay' })).toBeInTheDocument();
     expect(screen.queryByText('Lead Message Automation API')).not.toBeInTheDocument();
@@ -24,6 +25,7 @@ describe('ProjectsSection', () => {
         return link.getAttribute('href');
       });
     expect(demoHrefs).toEqual([
+      'https://bulwark-plum.vercel.app',
       'https://projeto-r.vercel.app',
       'https://obs-interactivescreen.onrender.com/',
     ]);
@@ -34,12 +36,17 @@ describe('ProjectsSection', () => {
     const caseStudyHrefs = screen
       .getAllByRole('link', { name: /Read case study/ })
       .map((link) => link.getAttribute('href'));
-    expect(caseStudyHrefs).toEqual(['/projects/projeto-r', '/projects/obs-interactive']);
+    expect(caseStudyHrefs).toEqual(['/projects/bulwark', '/projects/projeto-r', '/projects/obs-interactive']);
   });
 
   it('shows the cold-start notice for the OBS demo', () => {
     render(<ProjectsSection />);
     expect(screen.getByText(/The server may take about 50 s to wake up/)).toBeInTheDocument();
+  });
+
+  it('warns that the Bulwark API may need to wake up', () => {
+    render(<ProjectsSection />);
+    expect(screen.getByText(/The first scan may take about 50 s while the API wakes up/)).toBeInTheDocument();
   });
 
   it('falls back to a placeholder when the screenshot fails to load', () => {
